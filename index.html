@@ -1,0 +1,3224 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบขอเอกสารทางการศึกษา</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Sarabun', sans-serif; }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-pink-50 to-rose-100 min-h-screen">
+    <!-- Main Page -->
+    <div id="mainPage" class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <div></div>
+                    <div class="text-center">
+                        <h1 class="text-4xl font-bold text-blue-600 mb-2">📚 ระบบขอเอกสารทางการศึกษา</h1>
+                        <h2 class="text-2xl font-bold text-gray-800 mb-2">กลุ่มบริหารงานวิชาการ 🏫 โรงเรียนกาญจนดิษฐ์</h2>
+                        <p class="text-gray-600">ยื่นคำขอเอกสารต่างๆ ได้อย่างสะดวกและรวดเร็ว</p>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button onclick="showAdminLogin()" class="bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-purple-600 hover:to-indigo-600 transition-all duration-200">
+                            👨‍💼 Admin Login
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Menu -->
+        <div class="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <!-- Submit Request Menu -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105" onclick="showSubmitPage()">
+                <div class="text-6xl mb-6">📝</div>
+                <h2 class="text-2xl font-bold text-pink-800 mb-4">ยื่นคำขอเอกสาร</h2>
+                <p class="text-gray-600 mb-6">ยื่นคำขอเอกสารทางการศึกษาต่างๆ เช่น ใบรับรองการศึกษา ใบแสดงผลการเรียน</p>
+                <div class="bg-gradient-to-r from-pink-600 to-rose-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-pink-700 hover:to-rose-700 transition-all duration-200">
+                    เริ่มยื่นคำขอ →
+                </div>
+            </div>
+
+            <!-- Track Request Menu -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105" onclick="showTrackingPage()">
+                <div class="text-6xl mb-6">🔍</div>
+                <h2 class="text-2xl font-bold text-blue-800 mb-4">ติดตามสถานะคำขอ</h2>
+                <p class="text-gray-600 mb-6">ตรวจสอบสถานะความคืบหน้าของคำขอเอกสารด้วยหมายเลขคำขอ</p>
+                <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-200">
+                    ติดตามคำขอ →
+                </div>
+            </div>
+
+            <!-- Admin Menu -->
+            <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105" onclick="showAdminLogin()">
+                <div class="text-6xl mb-6">👨‍💼</div>
+                <h2 class="text-2xl font-bold text-purple-800 mb-4">Admin</h2>
+                <p class="text-gray-600 mb-6">เข้าสู่ระบบจัดการสำหรับเจ้าหน้าที่และผู้ดูแลระบบ</p>
+                <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-6 rounded-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transition-all duration-200">
+                    เข้าสู่ระบบ →
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Information -->
+        <div class="mt-8 bg-white rounded-2xl shadow-lg p-4">
+            <h3 class="text-lg font-bold text-gray-800 mb-3 text-center">📞 ติดต่อสอบถาม</h3>
+            <div class="grid md:grid-cols-4 gap-3 text-center">
+                <div class="flex flex-col items-center p-3 bg-blue-50 rounded-lg">
+                    <div class="text-2xl mb-1">📞</div>
+                    <div class="font-medium text-blue-800 text-sm">โทรศัพท์</div>
+                    <div class="text-blue-600 text-sm">077-379034</div>
+                </div>
+                <div class="flex flex-col items-center p-3 bg-green-50 rounded-lg">
+                    <div class="text-2xl mb-1">📧</div>
+                    <div class="font-medium text-green-800 text-sm">อีเมล</div>
+                    <div class="text-green-600 text-sm">academic@kandit.ac.th</div>
+                </div>
+                <div class="flex flex-col items-center p-3 bg-purple-50 rounded-lg">
+                    <div class="text-2xl mb-1">🏢</div>
+                    <div class="font-medium text-purple-800 text-sm">กลุ่มงาน</div>
+                    <div class="text-purple-600 text-xs">กลุ่มบริหารงานวิชาการ<br>โรงเรียนกาญจนดิษฐ์</div>
+                </div>
+                <div class="flex flex-col items-center p-3 bg-indigo-50 rounded-lg">
+                    <div class="mb-1">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" fill="#1877F2"/>
+                            <path d="M16.671 15.543l.532-3.47h-3.328v-2.25c0-.949.465-1.874 1.956-1.874h1.513V4.996s-1.374-.235-2.686-.235c-2.741 0-4.533 1.662-4.533 4.669v2.642H7.078v3.47h3.047v8.385a12.118 12.118 0 003.75 0v-8.385h2.796z" fill="#FFFFFF"/>
+                        </svg>
+                    </div>
+                    <div class="font-medium text-indigo-800 text-sm">Facebook</div>
+                    <a href="https://www.facebook.com/kanditschool" target="_blank" class="text-indigo-600 text-xs hover:text-indigo-800 hover:underline transition-colors duration-200">
+                        โรงเรียนกาญจนดิษฐ์
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Submit Request Page -->
+    <div id="submitPage" class="hidden container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <button onclick="goBackToMenu()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-gray-600 hover:to-gray-700 transition-all duration-200">
+                        ← กลับหน้าหลัก
+                    </button>
+                    <div>
+                        <h1 class="text-3xl font-bold text-pink-800 mb-2">📝 ยื่นคำขอเอกสาร</h1>
+                        <p class="text-gray-600">กรอกข้อมูลเพื่อยื่นคำขอเอกสารทางการศึกษา</p>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Request Form -->
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <form id="documentForm" class="space-y-6">
+                    <!-- Personal Information -->
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">คำนำหน้าชื่อ *</label>
+                            <select id="titlePrefix" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" required>
+                                <option value="">เลือกคำนำหน้า</option>
+                                <option value="เด็กชาย">เด็กชาย</option>
+                                <option value="เด็กหญิง">เด็กหญิง</option>
+                                <option value="นาย">นาย</option>
+                                <option value="นางสาว">นางสาว</option>
+                                <option value="นาง">นาง</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อ-นามสกุล *</label>
+                            <input type="text" id="fullName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="กรอกชื่อ-นามสกุล" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">รหัสนักเรียน *</label>
+                            <input type="text" id="studentId" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="กรอกรหัสนักเรียน" required>
+                        </div>
+                    </div>
+
+                    <!-- Name Change History -->
+                    <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                        <label class="flex items-center cursor-pointer">
+                            <input type="checkbox" id="hasNameChange" class="mr-3 text-pink-600" onchange="toggleOldNameField()">
+                            <span class="text-sm font-medium text-gray-700">🔄 เคยมีการเปลี่ยนชื่อ-นามสกุลหรือไม่</span>
+                        </label>
+                        
+                        <div id="oldNameField" class="hidden mt-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">คำนำหน้าชื่อเก่า *</label>
+                                    <select id="oldTitlePrefix" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                        <option value="">เลือกคำนำหน้า</option>
+                                        <option value="เด็กชาย">เด็กชาย</option>
+                                        <option value="เด็กหญิง">เด็กหญิง</option>
+                                        <option value="นาย">นาย</option>
+                                        <option value="นางสาว">นางสาว</option>
+                                        <option value="นาง">นาง</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อ-นามสกุลเก่า *</label>
+                                    <input type="text" id="oldName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="กรอกชื่อ-นามสกุลเก่า">
+                                </div>
+                            </div>
+                            <p class="text-xs text-gray-500 mt-1">💡 กรุณากรอกชื่อ-นามสกุลที่ใช้ในระเบียนการศึกษาเดิม</p>
+                        </div>
+                    </div>
+
+                    <!-- Student Status Selection -->
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-3">สถานภาพ *</label>
+                        <div class="space-y-3">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="studentStatus" value="current" id="currentStudent" class="mr-3 text-pink-600" onchange="toggleGradeLevel()" required>
+                                <span class="text-sm font-medium text-gray-700">🎓 นักเรียนปัจจุบัน</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="studentStatus" value="alumni" id="alumniStudent" class="mr-3 text-pink-600" onchange="toggleGradeLevel()" required>
+                                <span class="text-sm font-medium text-gray-700">👨‍🎓 ศิษย์เก่า</span>
+                            </label>
+                        </div>
+                        
+                        <!-- Grade Level Field (only for current students) -->
+                        <div id="gradeLevelField" class="hidden mt-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">ระดับชั้น *</label>
+                                    <select id="faculty" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" onchange="toggleRoomSelection()">
+                                        <option value="">เลือกระดับชั้น</option>
+                                        <option value="ม.1">ม.1</option>
+                                        <option value="ม.2">ม.2</option>
+                                        <option value="ม.3">ม.3</option>
+                                        <option value="ม.4">ม.4</option>
+                                        <option value="ม.5">ม.5</option>
+                                        <option value="ม.6">ม.6</option>
+                                    </select>
+                                </div>
+                                <div id="roomField" class="hidden">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">ห้อง *</label>
+                                    <select id="room" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                        <option value="">เลือกห้อง</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Graduation Year Field (only for alumni) -->
+                        <div id="graduationYearField" class="hidden mt-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">ปีที่จบการศึกษา *</label>
+                            <input type="number" id="graduationYear" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="เช่น 2567" min="2500" max="2600">
+                            <p class="text-xs text-gray-500 mt-1">💡 กรอกปีที่จบการศึกษาจากโรงเรียนกาญจนดิษฐ์</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">เบอร์โทรศัพท์ *</label>
+                        <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="กรอกเบอร์โทรศัพท์" required>
+                    </div>
+
+                    <!-- Document Selection -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-3">ประเภทเอกสารที่ต้องการ *</label>
+                        <div class="space-y-3">
+                            <label class="flex items-start p-4 border border-gray-200 rounded-lg hover:bg-pink-50 cursor-pointer">
+                                <input type="checkbox" name="documents" value="ปพ.1 ระเบียนแสดงผลการศึกษา" class="mr-3 text-pink-600 mt-1">
+                                <div class="text-sm">
+                                    <div class="font-medium">📜 ปพ.1 ระเบียนแสดงผลการศึกษา</div>
+                                    <div class="text-gray-500 text-xs mt-1">(ใช้รูปถ่ายไม่เกิน 6 เดือน)</div>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-start p-4 border border-gray-200 rounded-lg hover:bg-pink-50 cursor-pointer">
+                                <input type="checkbox" name="documents" value="รบ.1 (ต/ป) ระเบียนแสดงผลการเรียน หลักสูตร 2553 หลักสูตรเก่า" class="mr-3 text-pink-600 mt-1" onchange="toggleRb1Details(this)">
+                                <div class="text-sm flex-1">
+                                    <div class="font-medium">📊 รบ.1 (ต/ป) ระเบียนแสดงผลการเรียน</div>
+                                    <div class="text-gray-500 text-xs mt-1">หลักสูตร 2553 หลักสูตรเก่า</div>
+                                    <div class="rb1-details-field hidden mt-3">
+                                        <div class="grid grid-cols-1 gap-3">
+                                            <div>
+                                                <label class="block text-xs font-medium text-gray-600 mb-2">ระดับการศึกษา *</label>
+                                                <div class="space-y-2">
+                                                    <label class="flex items-center">
+                                                        <input type="radio" name="rb1-level" value="ชั้นมัธยมศึกษาตอนต้น" class="rb1-level-input mr-2 text-pink-600">
+                                                        <span class="text-xs">ชั้นมัธยมศึกษาตอนต้น (ม.1-ม.3)</span>
+                                                    </label>
+                                                    <label class="flex items-center">
+                                                        <input type="radio" name="rb1-level" value="ชั้นมัธยมศึกษาตอนปลาย" class="rb1-level-input mr-2 text-pink-600">
+                                                        <span class="text-xs">ชั้นมัธยมศึกษาตอนปลาย (ม.4-ม.6)</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs font-medium text-gray-600 mb-1">ปีที่จบ *</label>
+                                                <input type="number" class="graduation-year-input w-32 px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="เช่น 2567" min="2500" max="2600">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-start p-4 border border-gray-200 rounded-lg hover:bg-pink-50 cursor-pointer">
+                                <input type="checkbox" name="documents" value="ปพ.6 ใบแสดงผลการเรียนรายภาคเรียน" class="mr-3 text-pink-600 mt-1" onchange="toggleSemesterDetails(this)">
+                                <div class="text-sm flex-1">
+                                    <div class="font-medium">📋 ปพ.6 ใบแสดงผลการเรียนรายภาคเรียน</div>
+                                    <div class="semester-details-field hidden mt-3">
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <div>
+                                                <label class="block text-xs font-medium text-gray-600 mb-1">ภาคเรียน *</label>
+                                                <select class="semester-input w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-pink-500 focus:border-transparent">
+                                                    <option value="">เลือกภาคเรียน</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3 (ภาคฤดูร้อน)</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label class="block text-xs font-medium text-gray-600 mb-1">ปีการศึกษา *</label>
+                                                <input type="number" class="academic-year-input w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="เช่น 2567" min="2500" max="2600">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-start p-4 border border-gray-200 rounded-lg hover:bg-pink-50 cursor-pointer">
+                                <input type="checkbox" name="documents" value="ปพ.7 ใบรับรองผลการศึกษา" class="mr-3 text-pink-600 mt-1">
+                                <div class="text-sm">
+                                    <div class="font-medium">🎓 ปพ.7 ใบรับรองผลการศึกษา</div>
+                                    <div class="text-gray-500 text-xs mt-1">(ใช้รูปถ่ายไม่เกิน 6 เดือน)</div>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-start p-4 border border-gray-200 rounded-lg hover:bg-pink-50 cursor-pointer">
+                                <input type="checkbox" name="documents" value="ปพ.7 ใบรับรองสถานภาพการเป็นนักเรียน" class="mr-3 text-pink-600 mt-1">
+                                <div class="text-sm">
+                                    <div class="font-medium">👤 ปพ.7 ใบรับรองสถานภาพการเป็นนักเรียน</div>
+                                </div>
+                            </label>
+                            
+                            <label class="flex items-start p-4 border border-gray-200 rounded-lg hover:bg-pink-50 cursor-pointer">
+                                <input type="checkbox" name="documents" value="อื่น ๆ" class="mr-3 text-pink-600 mt-1" onchange="toggleOtherDocument(this)">
+                                <div class="text-sm flex-1">
+                                    <div class="font-medium">📄 อื่น ๆ</div>
+                                    <div class="other-document-field hidden mt-3">
+                                        <label class="block text-xs font-medium text-gray-600 mb-1">ระบุประเภทเอกสาร *</label>
+                                        <input type="text" class="other-document-input w-full px-3 py-2 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="กรุณาระบุประเภทเอกสารที่ต้องการ">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">จำนวน (ฉบับ) *</label>
+                            <input type="number" id="quantity" min="1" max="10" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="1" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">วัตถุประสงค์ *</label>
+                            <select id="purpose" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" onchange="togglePurposeDetails()" required>
+                                <option value="">เลือกวัตถุประสงค์</option>
+                                <option value="สมัครเรียนต่อ">สมัครเรียนต่อ</option>
+                                <option value="สมัครงาน">สมัครงาน</option>
+                                <option value="ขอทุนการศึกษา">ขอทุนการศึกษา</option>
+                                <option value="อื่นๆ">อื่นๆ</option>
+                            </select>
+                            
+                            <!-- Purpose Details Field -->
+                            <div id="purposeDetailsField" class="hidden mt-3">
+                                <label class="block text-sm font-medium text-gray-700 mb-2">ระบุรายละเอียดวัตถุประสงค์ *</label>
+                                <input type="text" id="purposeDetails" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-pink-500 focus:border-transparent" placeholder="กรุณาระบุรายละเอียดวัตถุประสงค์">
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white py-4 px-6 rounded-lg font-semibold text-lg hover:from-pink-700 hover:to-rose-700 transition-all duration-200 shadow-lg">
+                        📤 ยื่นคำขอเอกสาร
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tracking Page -->
+    <div id="trackingPage" class="hidden container mx-auto px-4 py-8">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <button onclick="goBackToMenu()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-gray-600 hover:to-gray-700 transition-all duration-200">
+                        ← กลับหน้าหลัก
+                    </button>
+                    <div>
+                        <h1 class="text-3xl font-bold text-blue-800 mb-2">🔍 ติดตามสถานะคำขอ</h1>
+                        <p class="text-gray-600">ตรวจสอบสถานะความคืบหน้าของคำขอเอกสาร</p>
+                    </div>
+                    <div></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-4xl mx-auto space-y-8">
+            <!-- Tracking Form -->
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h2 class="text-2xl font-bold text-blue-800 mb-6 text-center">🔍 ค้นหาคำขอ</h2>
+                
+                <div class="max-w-2xl mx-auto">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">ค้นหาคำขอ</label>
+                        <div class="flex space-x-3 mb-2">
+                            <input type="text" id="trackingInput" class="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="ค้นหาด้วย หมายเลขคำขอ, ชื่อ, หรือนามสกุล (เช่น REQ0001, สมชาย, ใจดี)">
+                            <button onclick="searchRequests()" class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:from-blue-700 hover:to-indigo-700 transition-all duration-200">
+                                🔍 ค้นหา
+                            </button>
+                        </div>
+                        <div class="text-xs text-gray-500 text-center">
+                            💡 สามารถค้นหาได้ด้วย: หมายเลขคำขอ (REQ0001), ชื่อ (สมชาย), นามสกุล (ใจดี), หรือรหัสนักเรียน
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Search Results -->
+                <div id="searchResults" class="hidden mt-8">
+                    <!-- Multiple results will be shown here -->
+                </div>
+
+                <!-- Single Tracking Result -->
+                <div id="trackingResult" class="hidden mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
+                    <h4 id="trackingTitle" class="font-semibold text-blue-800 mb-6 text-center text-xl">สถานะคำขอ</h4>
+                    <div id="progressSteps" class="space-y-4">
+                        <!-- Progress steps will be inserted here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Requests -->
+            <div class="bg-white rounded-2xl shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-blue-800 mb-6 text-center">📋 คำขอล่าสุด</h3>
+                <div id="requestList" class="space-y-4">
+                    <div class="text-gray-500 text-center py-12 bg-gray-50 rounded-lg">
+                        <div class="text-6xl mb-4">📄</div>
+                        <div class="text-xl mb-2">ยังไม่มีคำขอเอกสาร</div>
+                        <div class="text-sm">คำขอจะปรากฏที่นี่หลังจากยื่นคำขอ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Page -->
+    <div id="adminPage" class="hidden min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100">
+        <div class="container mx-auto px-4 py-8">
+            <!-- Admin Header -->
+            <div class="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-3xl font-bold text-purple-800 mb-2">👨‍💼 Admin Dashboard</h1>
+                        <p class="text-gray-600">จัดการระบบขอเอกสารทางการศึกษา</p>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <!-- Notification Bell -->
+                        <div class="relative">
+                            <button id="adminNotificationBell" onclick="showNotifications()" class="bg-gradient-to-r from-red-500 to-pink-500 text-white px-3 py-2 rounded-lg text-sm font-medium hover:from-red-600 hover:to-pink-600 transition-all duration-200 relative">
+                                🔔
+                                <span id="adminNotificationBadge" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-bold hidden">0</span>
+                            </button>
+                        </div>
+                        <button onclick="goBackToMain()" class="bg-gradient-to-r from-gray-500 to-gray-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-gray-600 hover:to-gray-700 transition-all duration-200">
+                            🏠 กลับหน้าหลัก
+                        </button>
+                        <button onclick="adminLogout()" class="bg-gradient-to-r from-red-500 to-red-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:from-red-600 hover:to-red-700 transition-all duration-200">
+                            🚪 Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Tabs -->
+            <div class="bg-white rounded-2xl shadow-lg p-6">
+                <div class="flex space-x-4 mb-6">
+                    <button onclick="showAdminTab('requests')" id="requestsTab" class="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-all duration-200">
+                        📋 จัดการเอกสาร
+                    </button>
+                    <button onclick="showAdminTab('statistics')" id="statisticsTab" class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-400 transition-all duration-200">
+                        📊 สถิติการขอเอกสาร
+                    </button>
+                    <button onclick="showAdminTab('users')" id="usersTab" class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-400 transition-all duration-200">
+                        👥 จัดการผู้ใช้
+                    </button>
+                    <button onclick="showAdminTab('sheets')" id="sheetsTab" class="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-400 transition-all duration-200">
+                        📊 ตั้งค่า Google Sheets
+                    </button>
+                </div>
+
+                <!-- Requests Tab -->
+                <div id="requestsTabContent" class="admin-tab-content">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-6">📋 จัดการคำขอเอกสาร</h3>
+                    <div id="adminRequestList" class="space-y-6">
+                        <div class="text-gray-500 text-center py-12 bg-gray-50 rounded-lg">
+                            <div class="text-4xl mb-4">📄</div>
+                            <div class="text-lg">ยังไม่มีคำขอเอกสารในระบบ</div>
+                            <div class="text-sm mt-2">คำขอจะปรากฏที่นี่เมื่อมีการยื่นคำขอใหม่</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics Tab -->
+                <div id="statisticsTabContent" class="admin-tab-content hidden">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-6">📊 สถิติการขอเอกสาร</h3>
+                    
+                    <!-- Summary Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white rounded-lg p-6 text-center">
+                            <div class="text-3xl font-bold mb-2" id="totalRequests">0</div>
+                            <div class="text-sm opacity-90">📋 คำขอทั้งหมด</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-500 to-green-600 text-white rounded-lg p-6 text-center">
+                            <div class="text-3xl font-bold mb-2" id="completedRequests">0</div>
+                            <div class="text-sm opacity-90">✅ เสร็จสิ้นแล้ว</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-lg p-6 text-center">
+                            <div class="text-3xl font-bold mb-2" id="pendingRequests">0</div>
+                            <div class="text-sm opacity-90">⏳ กำลังดำเนินการ</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white rounded-lg p-6 text-center">
+                            <div class="text-3xl font-bold mb-2" id="todayRequests">0</div>
+                            <div class="text-sm opacity-90">📅 วันนี้</div>
+                        </div>
+                    </div>
+
+                    <!-- Charts Section -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                        <!-- Document Types Chart -->
+                        <div class="bg-white border border-gray-200 rounded-lg p-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">📄 ประเภทเอกสารที่ขอมากที่สุด</h4>
+                            <div id="documentTypesChart" class="space-y-3">
+                                <!-- Chart will be generated here -->
+                            </div>
+                        </div>
+
+                        <!-- Monthly Requests Chart -->
+                        <div class="bg-white border border-gray-200 rounded-lg p-6">
+                            <h4 class="text-lg font-semibold text-gray-800 mb-4">📈 จำนวนคำขอรายเดือน</h4>
+                            <div id="monthlyChart" class="space-y-3">
+                                <!-- Chart will be generated here -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Status Distribution -->
+                    <div class="bg-white border border-gray-200 rounded-lg p-6 mb-8">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">🔄 การกระจายสถานะคำขอ</h4>
+                        <div id="statusChart" class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                            <!-- Status chart will be generated here -->
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity -->
+                    <div class="bg-white border border-gray-200 rounded-lg p-6">
+                        <h4 class="text-lg font-semibold text-gray-800 mb-4">🕒 กิจกรรมล่าสุด</h4>
+                        <div id="recentActivity" class="space-y-3">
+                            <!-- Recent activity will be shown here -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Users Tab -->
+                <div id="usersTabContent" class="admin-tab-content hidden">
+                    <div class="flex justify-between items-center mb-6">
+                        <h3 class="text-xl font-semibold text-purple-800">👥 จัดการผู้ใช้งาน</h3>
+                        <button onclick="showAddUserForm()" class="bg-green-500 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-600 transition-all duration-200">
+                            ➕ เพิ่มผู้ใช้ใหม่
+                        </button>
+                    </div>
+
+                    <!-- Add User Form -->
+                    <div id="addUserForm" class="hidden bg-gray-50 border border-gray-200 rounded-lg p-6 mb-6">
+                        <h4 class="font-semibold text-gray-800 mb-4">➕ เพิ่มผู้ใช้ใหม่</h4>
+                        <form id="newUserForm" class="space-y-4">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อผู้ใช้ (Username)</label>
+                                    <input type="text" id="newUsername" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="กรอกชื่อผู้ใช้" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">รหัสผ่าน (Password)</label>
+                                    <input type="password" id="newPassword" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="กรอกรหัสผ่าน" required>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">ชื่อ-นามสกุล</label>
+                                    <input type="text" id="newFullName" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="กรอกชื่อ-นามสกุล" required>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">บทบาท</label>
+                                    <select id="newRole" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+                                        <option value="admin">Admin</option>
+                                        <option value="staff">Staff</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button type="submit" class="px-6 py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-all duration-200">
+                                    ✅ เพิ่มผู้ใช้
+                                </button>
+                                <button type="button" onclick="hideAddUserForm()" class="px-6 py-3 bg-gray-500 text-white rounded-lg font-medium hover:bg-gray-600 transition-all duration-200">
+                                    ❌ ยกเลิก
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Users List -->
+                    <div id="usersList" class="space-y-4">
+                        <!-- Users will be loaded here -->
+                    </div>
+                </div>
+
+                <!-- Google Sheets Tab -->
+                <div id="sheetsTabContent" class="admin-tab-content hidden">
+                    <h3 class="text-xl font-semibold text-purple-800 mb-6">📊 ตั้งค่า Google Sheets</h3>
+                    
+                    <!-- Connection Status -->
+                    <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                        <h4 class="font-medium text-gray-800 mb-2">🔗 สถานะการเชื่อมต่อ</h4>
+                        <div id="adminConnectionStatus">
+                            <div class="flex items-center space-x-2">
+                                <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                                <span class="text-yellow-700">Demo Mode - ข้อมูลจะแสดงใน Console เท่านั้น</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Setup Methods -->
+                    <div class="grid md:grid-cols-1 gap-6">
+                        <!-- Google Apps Script Method -->
+                        <div class="border border-gray-200 rounded-lg p-6">
+                            <h4 class="text-lg font-semibold text-green-800 mb-4">🚀 วิธีที่ 1: Google Apps Script (แนะนำ)</h4>
+                            
+                            <div class="space-y-4">
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <h5 class="font-medium text-blue-800 mb-2">📋 ขั้นตอนการตั้งค่า:</h5>
+                                    <ol class="list-decimal list-inside text-sm text-blue-700 space-y-1">
+                                        <li>ไปที่ <a href="https://script.google.com" target="_blank" class="underline hover:text-blue-900">script.google.com</a></li>
+                                        <li>คลิก "โครงการใหม่" (New Project)</li>
+                                        <li>คัดลอก Code ด้านล่างไปวางใน Code.gs</li>
+                                        <li>แก้ไข SPREADSHEET_ID ให้เป็น ID ของ Google Sheets ของคุณ</li>
+                                        <li>คลิก "Deploy" → "New deployment"</li>
+                                        <li>เลือก Type: "Web app"</li>
+                                        <li>Execute as: "Me", Who has access: "Anyone"</li>
+                                        <li>คลิก "Deploy" และคัดลอก Web app URL</li>
+                                        <li>นำ URL มาใส่ในช่องด้านล่าง</li>
+                                    </ol>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-2">📝 Google Apps Script Code:</label>
+                                    <div class="bg-gray-100 border border-gray-300 rounded-lg p-4 text-xs font-mono overflow-x-auto">
+                                        <div class="flex justify-between items-center mb-2">
+                                            <span class="text-gray-600">คัดลอก Code นี้ไปใส่ใน Google Apps Script</span>
+                                            <button onclick="copyGoogleAppsScriptCode()" class="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600">
+                                                📋 คัดลอก
+                                            </button>
+                                        </div>
+                                        <pre class="text-gray-800 whitespace-pre-wrap">function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    const action = data.action;
+    
+    // เปลี่ยน SPREADSHEET_ID เป็น ID ของ Google Sheets ของคุณ
+    const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID_HERE';
+    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getActiveSheet();
+    
+    if (action === 'addRow') {
+      const rowData = data.data;
+      
+      // เพิ่มหัวข้อถ้ายังไม่มี
+      if (sheet.getLastRow() === 0) {
+        sheet.appendRow([
+          'หมายเลขคำขอ', 'คำนำหน้าชื่อ', 'ชื่อ-นามสกุล', 'คำนำหน้าชื่อเก่า', 'ชื่อ-นามสกุลเก่า', 'เคยเปลี่ยนชื่อ', 'รหัสนักเรียน', 'สถานภาพ', 'ระดับชั้น', 'ห้อง', 'ปีที่จบ',
+          'เอกสารที่ขอ', 'จำนวน', 'วัตถุประสงค์', 'เบอร์โทร', 
+          'วันที่ยื่น', 'เวลาที่ยื่น', 'สถานะ', 'อัพเดทล่าสุด'
+        ]);
+      }
+      
+      // เพิ่มข้อมูล
+      sheet.appendRow([
+        rowData.requestId, rowData.titlePrefix, rowData.fullName, rowData.oldTitlePrefix, rowData.oldName, rowData.hasNameChange, rowData.studentId, rowData.studentStatus, rowData.faculty, rowData.room, rowData.graduationYear,
+        rowData.documents, rowData.quantity, rowData.purpose, rowData.phone,
+        rowData.submitDate, rowData.submitTime, rowData.status,
+        new Date().toLocaleString('th-TH')
+      ]);
+      
+      return ContentService
+        .createTextOutput(JSON.stringify({success: true, message: 'บันทึกข้อมูลสำเร็จ'}))
+        .setMimeType(ContentService.MimeType.JSON);
+        
+    } else if (action === 'updateStatus') {
+      // อัพเดทสถานะ
+      const requestId = data.requestId;
+      const newStatus = data.status;
+      const updateTime = data.updateTime;
+      
+      const dataRange = sheet.getDataRange();
+      const values = dataRange.getValues();
+      
+      for (let i = 1; i < values.length; i++) {
+        if (values[i][0] === requestId) {
+          sheet.getRange(i + 1, 18).setValue(newStatus);
+          sheet.getRange(i + 1, 19).setValue(updateTime);
+          break;
+        }
+      }
+      
+      return ContentService
+        .createTextOutput(JSON.stringify({success: true, message: 'อัพเดทสถานะสำเร็จ'}))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({success: false, error: error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}</pre>
+                                    </div>
+                                </div>
+
+                                <div class="grid md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">🔗 Web App URL:</label>
+                                        <input type="url" id="adminWebAppUrlInput" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="https://script.google.com/macros/s/.../exec">
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm font-medium text-gray-700 mb-2">📊 Spreadsheet ID (ไม่บังคับ):</label>
+                                        <input type="text" id="adminSpreadsheetIdInput" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms">
+                                    </div>
+                                </div>
+
+                                <div class="flex space-x-3">
+                                    <button onclick="adminTestConnection()" class="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all duration-200">
+                                        🧪 ทดสอบการเชื่อมต่อ
+                                    </button>
+                                    <button onclick="adminSaveGoogleSheetsConfig()" class="px-6 py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-all duration-200">
+                                        💾 บันทึกการตั้งค่า
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Help Section -->
+                    <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                        <h5 class="font-medium text-yellow-800 mb-2">💡 คำแนะนำ:</h5>
+                        <ul class="text-sm text-yellow-700 space-y-1">
+                            <li>• หาก Spreadsheet ID ไม่ได้กรอก ระบบจะใช้ค่าเริ่มต้นใน Google Apps Script</li>
+                            <li>• ข้อมูลจะถูกบันทึกอัตโนมัติทุกครั้งที่มีการยื่นคำขอหรืออัพเดทสถานะ</li>
+                            <li>• สามารถดู Google Sheets เพื่อติดตามข้อมูลแบบ Real-time ได้</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Modal -->
+    <div id="notificationModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-2xl shadow-xl p-6 w-96 mx-4 max-h-96 overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold text-gray-800">🔔 การแจ้งเตือน</h3>
+                <button onclick="hideNotifications()" class="text-gray-500 hover:text-gray-700">✕</button>
+            </div>
+            <div id="notificationList" class="space-y-3">
+                <div class="text-gray-500 text-center py-4">ไม่มีการแจ้งเตือนใหม่</div>
+            </div>
+            <div class="mt-4 flex space-x-2">
+                <button onclick="markAllAsRead()" class="flex-1 bg-blue-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-blue-600 transition-all duration-200">
+                    ✅ อ่านทั้งหมดแล้ว
+                </button>
+                <button onclick="clearAllNotifications()" class="flex-1 bg-gray-500 text-white py-2 px-4 rounded-lg text-sm font-medium hover:bg-gray-600 transition-all duration-200">
+                    🗑️ ลบทั้งหมด
+                </button>
+            </div>
+        </div>
+    </div>
+
+        <!-- Admin Login Modal -->
+        <div id="adminLoginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+            <div class="bg-white rounded-2xl shadow-xl p-6 w-96 mx-4">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-semibold text-gray-800">👨‍💼 Admin Login</h3>
+                    <button onclick="hideAdminLogin()" class="text-gray-500 hover:text-gray-700">✕</button>
+                </div>
+                <form id="adminLoginForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                        <input type="text" id="adminUsername" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="admin" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                        <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="admin123" required>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transition-all duration-200">
+                        🔐 เข้าสู่ระบบ
+                    </button>
+                </form>
+                <div class="mt-4 text-xs text-gray-500 text-center">
+                    Demo: username = admin, password = admin123
+                </div>
+            </div>
+        </div>
+
+
+
+
+    <!-- Google Sheets Setup Modal -->
+    <div id="googleSheetsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-2xl shadow-xl p-6 w-full max-w-4xl mx-4 max-h-96 overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-semibold text-gray-800">📊 ตั้งค่า Google Sheets</h3>
+                <button onclick="hideGoogleSheetsSetup()" class="text-gray-500 hover:text-gray-700 text-xl">✕</button>
+            </div>
+
+            <!-- Connection Status -->
+            <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                <h4 class="font-medium text-gray-800 mb-2">🔗 สถานะการเชื่อมต่อ</h4>
+                <div id="connectionStatus">
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                        <span class="text-yellow-700">Demo Mode - ข้อมูลจะแสดงใน Console เท่านั้น</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Setup Methods -->
+            <div class="grid md:grid-cols-1 gap-6">
+                <!-- Google Apps Script Method -->
+                <div class="border border-gray-200 rounded-lg p-6">
+                    <h4 class="text-lg font-semibold text-green-800 mb-4">🚀 วิธีที่ 1: Google Apps Script (แนะนำ)</h4>
+                    
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                            <h5 class="font-medium text-blue-800 mb-2">📋 ขั้นตอนการตั้งค่า:</h5>
+                            <ol class="list-decimal list-inside text-sm text-blue-700 space-y-1">
+                                <li>ไปที่ <a href="https://script.google.com" target="_blank" class="underline hover:text-blue-900">script.google.com</a></li>
+                                <li>คลิก "โครงการใหม่" (New Project)</li>
+                                <li>คัดลอก Code ด้านล่างไปวางใน Code.gs</li>
+                                <li>แก้ไข SPREADSHEET_ID ให้เป็น ID ของ Google Sheets ของคุณ</li>
+                                <li>คลิก "Deploy" → "New deployment"</li>
+                                <li>เลือก Type: "Web app"</li>
+                                <li>Execute as: "Me", Who has access: "Anyone"</li>
+                                <li>คลิก "Deploy" และคัดลอก Web app URL</li>
+                                <li>นำ URL มาใส่ในช่องด้านล่าง</li>
+                            </ol>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2">📝 Google Apps Script Code:</label>
+                            <div class="bg-gray-100 border border-gray-300 rounded-lg p-4 text-xs font-mono overflow-x-auto">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-600">คัดลอก Code นี้ไปใส่ใน Google Apps Script</span>
+                                    <button onclick="copyGoogleAppsScriptCode()" class="bg-blue-500 text-white px-3 py-1 rounded text-xs hover:bg-blue-600">
+                                        📋 คัดลอก
+                                    </button>
+                                </div>
+                                <pre class="text-gray-800 whitespace-pre-wrap">function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    const action = data.action;
+    
+    // เปลี่ยน SPREADSHEET_ID เป็น ID ของ Google Sheets ของคุณ
+    const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID_HERE';
+    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getActiveSheet();
+    
+    if (action === 'addRow') {
+      const rowData = data.data;
+      
+      // เพิ่มหัวข้อถ้ายังไม่มี
+      if (sheet.getLastRow() === 0) {
+        sheet.appendRow([
+          'หมายเลขคำขอ', 'คำนำหน้าชื่อ', 'ชื่อ-นามสกุล', 'คำนำหน้าชื่อเก่า', 'ชื่อ-นามสกุลเก่า', 'เคยเปลี่ยนชื่อ', 'รหัสนักเรียน', 'ระดับชั้น', 
+          'เอกสารที่ขอ', 'จำนวน', 'วัตถุประสงค์', 'เบอร์โทร', 
+          'วันที่ยื่น', 'เวลาที่ยื่น', 'สถานะ', 'อัพเดทล่าสุด'
+        ]);
+      }
+      
+      // เพิ่มข้อมูล
+      sheet.appendRow([
+        rowData.requestId, rowData.titlePrefix, rowData.fullName, rowData.oldTitlePrefix, rowData.oldName, rowData.hasNameChange, rowData.studentId, rowData.faculty,
+        rowData.documents, rowData.quantity, rowData.purpose, rowData.phone,
+        rowData.submitDate, rowData.submitTime, rowData.status,
+        new Date().toLocaleString('th-TH')
+      ]);
+      
+      return ContentService
+        .createTextOutput(JSON.stringify({success: true, message: 'บันทึกข้อมูลสำเร็จ'}))
+        .setMimeType(ContentService.MimeType.JSON);
+        
+    } else if (action === 'updateStatus') {
+      // อัพเดทสถานะ
+      const requestId = data.requestId;
+      const newStatus = data.status;
+      const updateTime = data.updateTime;
+      
+      const dataRange = sheet.getDataRange();
+      const values = dataRange.getValues();
+      
+      for (let i = 1; i < values.length; i++) {
+        if (values[i][0] === requestId) {
+          sheet.getRange(i + 1, 15).setValue(newStatus);
+          sheet.getRange(i + 1, 16).setValue(updateTime);
+          break;
+        }
+      }
+      
+      return ContentService
+        .createTextOutput(JSON.stringify({success: true, message: 'อัพเดทสถานะสำเร็จ'}))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({success: false, error: error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}</pre>
+                            </div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">🔗 Web App URL:</label>
+                                <input type="url" id="webAppUrlInput" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="https://script.google.com/macros/s/.../exec">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">📊 Spreadsheet ID (ไม่บังคับ):</label>
+                                <input type="text" id="spreadsheetIdInput" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms">
+                            </div>
+                        </div>
+
+                        <div class="flex space-x-3">
+                            <button onclick="testConnection()" class="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all duration-200">
+                                🧪 ทดสอบการเชื่อมต่อ
+                            </button>
+                            <button onclick="saveGoogleSheetsConfig()" class="px-6 py-3 bg-green-500 text-white rounded-lg font-medium hover:bg-green-600 transition-all duration-200">
+                                💾 บันทึกการตั้งค่า
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Help Section -->
+            <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <h5 class="font-medium text-yellow-800 mb-2">💡 คำแนะนำ:</h5>
+                <ul class="text-sm text-yellow-700 space-y-1">
+                    <li>• หาก Spreadsheet ID ไม่ได้กรอก ระบบจะใช้ค่าเริ่มต้นใน Google Apps Script</li>
+                    <li>• ข้อมูลจะถูกบันทึกอัตโนมัติทุกครั้งที่มีการยื่นคำขอหรืออัพเดทสถานะ</li>
+                    <li>• สามารถดู Google Sheets เพื่อติดตามข้อมูลแบบ Real-time ได้</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Login Modal -->
+    <div id="adminLoginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center">
+        <div class="bg-white rounded-2xl shadow-xl p-6 w-96 mx-4">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-semibold text-gray-800">👨‍💼 Admin Login</h3>
+                <button onclick="hideAdminLogin()" class="text-gray-500 hover:text-gray-700">✕</button>
+            </div>
+            <form id="adminLoginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Username</label>
+                    <input type="text" id="adminUsername" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="admin" required>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <input type="password" id="adminPassword" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="admin123" required>
+                </div>
+                <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-indigo-600 text-white py-3 px-4 rounded-lg font-semibold hover:from-purple-700 hover:to-indigo-700 transition-all duration-200">
+                    🔐 เข้าสู่ระบบ
+                </button>
+            </form>
+            <div class="mt-4 text-xs text-gray-500 text-center">
+                Demo: username = admin, password = admin123
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let requestCounter = 1;
+        let requestDatabase = {}; // Store request data for tracking
+        let isAdminLoggedIn = false;
+        let notifications = []; // Store notifications
+        let notificationCounter = 1;
+        let userDatabase = {
+            'admin': { username: 'admin', password: 'admin123', fullName: 'ผู้ดูแลระบบ', role: 'admin', createdDate: '2024-01-01' },
+            'staff1': { username: 'staff1', password: 'staff123', fullName: 'เจ้าหน้าที่ 1', role: 'staff', createdDate: '2024-01-15' }
+        };
+
+        // Google Sheets Configuration
+        let GOOGLE_SHEETS_CONFIG = {
+            webAppUrl: 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE',
+            spreadsheetId: 'YOUR_SPREADSHEET_ID_HERE'
+        };
+
+        // Function to send data to Google Sheets
+        async function sendToGoogleSheets(action, data) {
+            // If not configured, just log to console
+            if (GOOGLE_SHEETS_CONFIG.webAppUrl === 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+                console.log('📊 Google Sheets Demo Mode - Data would be sent:', { action, data });
+                return { success: true, message: 'Demo mode - ข้อมูลแสดงใน Console' };
+            }
+
+            try {
+                const response = await fetch(GOOGLE_SHEETS_CONFIG.webAppUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ action, data })
+                });
+
+                const result = await response.json();
+                return result;
+            } catch (error) {
+                console.error('Error sending to Google Sheets:', error);
+                return { success: false, error: error.message };
+            }
+        }
+
+        document.getElementById('documentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const titlePrefix = document.getElementById('titlePrefix').value;
+            const fullName = document.getElementById('fullName').value;
+            const studentId = document.getElementById('studentId').value;
+            const studentStatus = document.querySelector('input[name="studentStatus"]:checked')?.value;
+            const faculty = studentStatus === 'current' ? document.getElementById('faculty').value : '';
+            const graduationYear = studentStatus === 'alumni' ? document.getElementById('graduationYear').value : '';
+            const quantity = document.getElementById('quantity').value;
+            const purpose = document.getElementById('purpose').value;
+            const purposeDetails = document.getElementById('purposeDetails').value;
+            const phone = document.getElementById('phone').value;
+            const hasNameChange = document.getElementById('hasNameChange').checked;
+            const oldTitlePrefix = hasNameChange ? document.getElementById('oldTitlePrefix').value : '';
+            const oldName = hasNameChange ? document.getElementById('oldName').value : '';
+            
+            // Validate student status
+            if (!studentStatus) {
+                alert('กรุณาเลือกสถานภาพ (นักเรียนปัจจุบัน หรือ ศิษย์เก่า)');
+                return;
+            }
+            
+            // Validate based on student status
+            if (studentStatus === 'current' && !faculty) {
+                alert('กรุณาเลือกระดับชั้นสำหรับนักเรียนปัจจุบัน');
+                return;
+            }
+            
+            // Validate room for current students
+            const room = studentStatus === 'current' ? document.getElementById('room').value : '';
+            if (studentStatus === 'current' && faculty && !room) {
+                alert('กรุณาเลือกห้องสำหรับนักเรียนปัจจุบัน');
+                return;
+            }
+            
+            if (studentStatus === 'alumni' && !graduationYear) {
+                alert('กรุณากรอกปีที่จบการศึกษาสำหรับศิษย์เก่า');
+                return;
+            }
+            
+            // Combine title prefix with full name
+            const fullNameWithTitle = `${titlePrefix}${fullName}`;
+            const oldNameWithTitle = hasNameChange && oldTitlePrefix && oldName ? `${oldTitlePrefix}${oldName}` : oldName;
+            
+            // Get selected documents with additional details
+            const selectedDocs = [];
+            const checkboxes = document.querySelectorAll('input[name="documents"]:checked');
+            checkboxes.forEach(checkbox => {
+                let docName = checkbox.value;
+                const parentLabel = checkbox.closest('label');
+                
+                // Add graduation year and education level for รบ.1
+                if (docName.includes('รบ.1')) {
+                    const graduationYearInput = parentLabel.querySelector('.graduation-year-input');
+                    const selectedLevel = parentLabel.querySelector('.rb1-level-input:checked');
+                    
+                    let additionalInfo = '';
+                    if (selectedLevel && selectedLevel.value) {
+                        additionalInfo += selectedLevel.value;
+                    }
+                    if (graduationYearInput && graduationYearInput.value) {
+                        additionalInfo += ` ปีที่จบ: ${graduationYearInput.value}`;
+                    }
+                    if (additionalInfo) {
+                        docName += ` (${additionalInfo})`;
+                    }
+                }
+                
+                // Add semester details for ปพ.6
+                if (docName.includes('ปพ.6')) {
+                    const semesterInput = parentLabel.querySelector('.semester-input');
+                    const academicYearInput = parentLabel.querySelector('.academic-year-input');
+                    if (semesterInput && academicYearInput && semesterInput.value && academicYearInput.value) {
+                        docName += ` (ภาคเรียน ${semesterInput.value} ปีการศึกษา ${academicYearInput.value})`;
+                    }
+                }
+                
+                // Add custom document name for อื่น ๆ
+                if (docName.includes('อื่น ๆ')) {
+                    const otherDocumentInput = parentLabel.querySelector('.other-document-input');
+                    if (otherDocumentInput && otherDocumentInput.value) {
+                        docName = `อื่น ๆ: ${otherDocumentInput.value}`;
+                    }
+                }
+                
+                selectedDocs.push(docName);
+            });
+            
+            if (selectedDocs.length === 0) {
+                alert('กรุณาเลือกประเภทเอกสารที่ต้องการ');
+                return;
+            }
+            
+            // Validate additional fields
+            let validationError = '';
+            checkboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    const parentLabel = checkbox.closest('label');
+                    const docName = checkbox.value;
+                    
+                    // Check รบ.1 graduation year and education level
+                    if (docName.includes('รบ.1')) {
+                        const graduationYearInput = parentLabel.querySelector('.graduation-year-input');
+                        const selectedLevel = parentLabel.querySelector('.rb1-level-input:checked');
+                        
+                        if (!selectedLevel) {
+                            validationError = 'กรุณาเลือกระดับการศึกษาสำหรับ รบ.1';
+                        } else if (!graduationYearInput.value) {
+                            validationError = 'กรุณากรอกปีที่จบสำหรับ รบ.1';
+                        }
+                    }
+                    
+                    // Check ปพ.6 semester details
+                    if (docName.includes('ปพ.6')) {
+                        const semesterInput = parentLabel.querySelector('.semester-input');
+                        const academicYearInput = parentLabel.querySelector('.academic-year-input');
+                        if (!semesterInput.value || !academicYearInput.value) {
+                            validationError = 'กรุณากรอกภาคเรียนและปีการศึกษาสำหรับ ปพ.6';
+                        }
+                    }
+                    
+                    // Check อื่น ๆ document specification
+                    if (docName.includes('อื่น ๆ')) {
+                        const otherDocumentInput = parentLabel.querySelector('.other-document-input');
+                        if (!otherDocumentInput.value) {
+                            validationError = 'กรุณาระบุประเภทเอกสารสำหรับ "อื่น ๆ"';
+                        }
+                    }
+                }
+            });
+            
+            // Validate purpose details
+            if (purpose === 'อื่นๆ' && !purposeDetails.trim()) {
+                alert('กรุณาระบุรายละเอียดวัตถุประสงค์สำหรับ "อื่นๆ"');
+                return;
+            }
+            
+            if (validationError) {
+                alert(validationError);
+                return;
+            }
+            
+            // Create request
+            const requestId = `REQ${String(requestCounter).padStart(4, '0')}`;
+            const currentDate = new Date().toLocaleDateString('th-TH');
+            const currentTime = new Date().toLocaleTimeString('th-TH', {hour: '2-digit', minute: '2-digit'});
+            
+            // Store request data for tracking
+            requestDatabase[requestId] = {
+                id: requestId,
+                titlePrefix: titlePrefix,
+                fullName: fullNameWithTitle,
+                oldTitlePrefix: oldTitlePrefix,
+                oldName: oldNameWithTitle,
+                hasNameChange: hasNameChange,
+                studentId: studentId,
+                studentStatus: studentStatus,
+                faculty: faculty,
+                room: room,
+                graduationYear: graduationYear,
+                documents: selectedDocs,
+                quantity: quantity,
+                purpose: purpose === 'อื่นๆ' ? `อื่นๆ: ${purposeDetails}` : purpose,
+                phone: phone,
+                submitDate: currentDate,
+                submitTime: currentTime,
+                status: 'submitted',
+                progress: [
+                    {step: 'รับคำขอ', status: 'completed', time: `${currentDate} ${currentTime}`, description: 'ระบบได้รับคำขอเอกสารเรียบร้อยแล้ว'},
+                    {step: 'ตรวจสอบข้อมูล', status: 'pending', time: '', description: 'เจ้าหน้าที่กำลังตรวจสอบความถูกต้องของข้อมูล'},
+                    {step: 'จัดทำเอกสาร', status: 'pending', time: '', description: 'กำลังดำเนินการจัดทำเอกสารตามที่ร้องขอ'},
+                    {step: 'ตรวจสอบเอกสาร', status: 'pending', time: '', description: 'ตรวจสอบความถูกต้องของเอกสารที่จัดทำ'},
+                    {step: 'พร้อมรับเอกสาร', status: 'pending', time: '', description: 'เอกสารพร้อมให้รับที่ห้องวิชาการ'}
+                ]
+            };
+
+            // Send data to Google Sheets
+            const sheetsData = {
+                requestId: requestId,
+                titlePrefix: titlePrefix,
+                fullName: fullNameWithTitle,
+                oldTitlePrefix: oldTitlePrefix,
+                oldName: oldNameWithTitle,
+                hasNameChange: hasNameChange ? 'เคย' : 'ไม่เคย',
+                studentId: studentId,
+                studentStatus: studentStatus === 'current' ? 'นักเรียนปัจจุบัน' : 'ศิษย์เก่า',
+                faculty: faculty,
+                room: room,
+                graduationYear: graduationYear,
+                documents: selectedDocs.join(', '),
+                quantity: quantity,
+                purpose: purpose === 'อื่นๆ' ? `อื่นๆ: ${purposeDetails}` : purpose,
+                phone: phone,
+                submitDate: currentDate,
+                submitTime: currentTime,
+                status: 'รับคำขอแล้ว'
+            };
+
+            sendToGoogleSheets('addRow', sheetsData).then(result => {
+                if (result.success) {
+                    console.log('✅ บันทึกข้อมูลไป Google Sheets สำเร็จ');
+                } else {
+                    console.error('❌ เกิดข้อผิดพลาดในการบันทึกไป Google Sheets:', result.error);
+                }
+            });
+            
+            // Add to request list
+            addRequestToList(requestId, fullNameWithTitle, selectedDocs, quantity, currentDate);
+            
+            // Create notification for admin
+            addNotification({
+                id: `NOTIF${String(notificationCounter).padStart(4, '0')}`,
+                type: 'new_request',
+                title: '📋 คำขอเอกสารใหม่',
+                message: `${fullNameWithTitle} ยื่นคำขอเอกสาร ${requestId}`,
+                requestId: requestId,
+                timestamp: new Date().toLocaleString('th-TH'),
+                isRead: false
+            });
+            notificationCounter++;
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message and redirect to tracking page
+            alert(`✅ ยื่นคำขอสำเร็จ!\nหมายเลขคำขอ: ${requestId}\nกรุณาจดบันทึกหมายเลขนี้ไว้`);
+            
+            // Update admin panel if logged in
+            if (isAdminLoggedIn) {
+                loadAdminRequests();
+            }
+            
+            // Update notification display
+            updateNotificationDisplay();
+            
+            // Redirect to tracking page and auto-fill the request ID
+            showTrackingPage();
+            document.getElementById('trackingInput').value = requestId;
+            
+            requestCounter++;
+        });
+
+        function addRequestToList(requestId, fullName, documents, quantity, date) {
+            const requestList = document.getElementById('requestList');
+            
+            // Remove empty message if exists
+            if (requestList.querySelector('.text-gray-500')) {
+                requestList.innerHTML = '';
+            }
+            
+            const requestItem = document.createElement('div');
+            requestItem.className = 'bg-gray-50 border border-gray-200 rounded-lg p-4';
+            
+            const statusColor = 'text-yellow-600';
+            const statusBg = 'bg-yellow-100';
+            const statusText = 'กำลังดำเนินการ';
+            
+            requestItem.innerHTML = `
+                <div class="flex justify-between items-start mb-2">
+                    <div class="font-semibold text-gray-800">${requestId}</div>
+                    <span class="px-2 py-1 ${statusBg} ${statusColor} text-xs rounded-full">${statusText}</span>
+                </div>
+                <div class="text-sm text-gray-600 mb-2">
+                    <div><strong>ผู้ขอ:</strong> ${fullName}</div>
+                    <div><strong>วันที่ยื่น:</strong> ${date}</div>
+                </div>
+                <div class="text-sm text-gray-700">
+                    <div><strong>เอกสาร:</strong></div>
+                    <ul class="list-disc list-inside ml-2">
+                        ${documents.map(doc => `<li>${doc} (${quantity} ฉบับ)</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="mt-3 flex space-x-2">
+                    <button onclick="updateStatus('${requestId}', 'ready')" class="px-3 py-1 bg-green-100 text-green-700 text-xs rounded hover:bg-green-200">
+                        ✅ พร้อมรับ
+                    </button>
+                    <button onclick="updateStatus('${requestId}', 'completed')" class="px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded hover:bg-blue-200">
+                        📋 รับแล้ว
+                    </button>
+                </div>
+            `;
+            
+            requestList.appendChild(requestItem);
+        }
+
+        function updateStatus(requestId, status) {
+            const requestItems = document.querySelectorAll('#requestList > div');
+            
+            requestItems.forEach(item => {
+                const idElement = item.querySelector('.font-semibold');
+                if (idElement && idElement.textContent === requestId) {
+                    const statusElement = item.querySelector('.px-2.py-1');
+                    
+                    if (status === 'ready') {
+                        statusElement.className = 'px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full';
+                        statusElement.textContent = 'พร้อมรับ';
+                    } else if (status === 'completed') {
+                        statusElement.className = 'px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full';
+                        statusElement.textContent = 'รับแล้ว';
+                        
+                        // Hide action buttons
+                        const buttons = item.querySelector('.mt-3');
+                        if (buttons) buttons.style.display = 'none';
+                    }
+                }
+            });
+        }
+
+        function searchRequests() {
+            const searchTerm = document.getElementById('trackingInput').value.trim();
+            const searchResults = document.getElementById('searchResults');
+            const trackingResult = document.getElementById('trackingResult');
+
+            if (!searchTerm) {
+                alert('กรุณากรอกข้อมูลที่ต้องการค้นหา');
+                return;
+            }
+
+            // Hide previous results
+            searchResults.classList.add('hidden');
+            trackingResult.classList.add('hidden');
+
+            // Search through all requests
+            const matchingRequests = [];
+            
+            Object.values(requestDatabase).forEach(request => {
+                const searchTermLower = searchTerm.toLowerCase();
+                const fullNameLower = request.fullName.toLowerCase();
+                const requestIdLower = request.id.toLowerCase();
+                const studentIdLower = request.studentId.toLowerCase();
+                
+                // Check if search term matches any field
+                if (requestIdLower.includes(searchTermLower) ||
+                    fullNameLower.includes(searchTermLower) ||
+                    studentIdLower.includes(searchTermLower)) {
+                    matchingRequests.push(request);
+                }
+            });
+
+            if (matchingRequests.length === 0) {
+                alert('ไม่พบข้อมูลที่ตรงกับการค้นหา');
+                return;
+            }
+
+            if (matchingRequests.length === 1) {
+                // Show single result in detailed view
+                showSingleRequestDetails(matchingRequests[0]);
+            } else {
+                // Show multiple results
+                showMultipleSearchResults(matchingRequests, searchTerm);
+            }
+        }
+
+        function showSingleRequestDetails(request) {
+            const trackingResult = document.getElementById('trackingResult');
+            const trackingTitle = document.getElementById('trackingTitle');
+            const progressSteps = document.getElementById('progressSteps');
+
+            // Show tracking result
+            trackingResult.classList.remove('hidden');
+            trackingTitle.textContent = `สถานะคำขอ: ${request.id}`;
+
+            // Clear previous steps
+            progressSteps.innerHTML = '';
+
+            // Display progress steps
+            request.progress.forEach((step, index) => {
+                const stepElement = document.createElement('div');
+                stepElement.className = 'flex items-start space-x-3';
+
+                let statusIcon = '';
+                let statusColor = '';
+                
+                if (step.status === 'completed') {
+                    statusIcon = '✅';
+                    statusColor = 'text-green-600';
+                } else if (step.status === 'in-progress') {
+                    statusIcon = '🔄';
+                    statusColor = 'text-blue-600';
+                } else {
+                    statusIcon = '⏳';
+                    statusColor = 'text-gray-400';
+                }
+
+                stepElement.innerHTML = `
+                    <div class="flex-shrink-0 text-lg">${statusIcon}</div>
+                    <div class="flex-1">
+                        <div class="font-medium ${statusColor}">${step.step}</div>
+                        <div class="text-sm text-gray-600">${step.description}</div>
+                        ${step.time ? `<div class="text-xs text-gray-500 mt-1">⏰ ${step.time}</div>` : ''}
+                    </div>
+                `;
+
+                progressSteps.appendChild(stepElement);
+            });
+
+            // Add request details
+            const detailsElement = document.createElement('div');
+            detailsElement.className = 'mt-4 pt-4 border-t border-pink-200';
+            detailsElement.innerHTML = `
+                <h5 class="font-medium text-pink-800 mb-2">รายละเอียดคำขอ</h5>
+                <div class="text-sm text-gray-600 space-y-1">
+                    <div><strong>ผู้ขอ:</strong> ${request.fullName}</div>
+                    ${request.hasNameChange ? `<div><strong>ชื่อ-นามสกุลเก่า:</strong> ${request.oldName}</div>` : ''}
+                    <div><strong>รหัสนักเรียน:</strong> ${request.studentId}</div>
+                    <div><strong>สถานภาพ:</strong> ${request.studentStatus === 'current' ? '🎓 นักเรียนปัจจุบัน' : '👨‍🎓 ศิษย์เก่า'}</div>
+                    ${request.studentStatus === 'current' && request.faculty ? `<div><strong>ระดับชั้น:</strong> ${request.faculty}${request.room ? `/${request.room}` : ''}</div>` : ''}
+                    ${request.studentStatus === 'alumni' && request.graduationYear ? `<div><strong>ปีที่จบ:</strong> ${request.graduationYear}</div>` : ''}
+                    <div><strong>เอกสารที่ขอ:</strong></div>
+                    <ul class="list-disc list-inside ml-4">
+                        ${request.documents.map(doc => `<li>${doc} (${request.quantity} ฉบับ)</li>`).join('')}
+                    </ul>
+                    <div><strong>วัตถุประสงค์:</strong> ${request.purpose}</div>
+                </div>
+            `;
+            progressSteps.appendChild(detailsElement);
+        }
+
+        function showMultipleSearchResults(requests, searchTerm) {
+            const searchResults = document.getElementById('searchResults');
+            
+            searchResults.classList.remove('hidden');
+            searchResults.innerHTML = `
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-800 mb-4 text-center text-xl">
+                        🔍 ผลการค้นหา "${searchTerm}" (พบ ${requests.length} รายการ)
+                    </h4>
+                    <div class="space-y-4" id="multipleResultsList">
+                        <!-- Results will be inserted here -->
+                    </div>
+                </div>
+            `;
+
+            const resultsList = document.getElementById('multipleResultsList');
+            
+            requests.forEach(request => {
+                // Get current step
+                let currentStep = 'รับคำขอ';
+                let currentStepIndex = 0;
+                request.progress.forEach((step, index) => {
+                    if (step.status === 'completed' || step.status === 'in-progress') {
+                        currentStep = step.step;
+                        currentStepIndex = index;
+                    }
+                });
+
+                const resultElement = document.createElement('div');
+                resultElement.className = 'bg-white border border-gray-200 rounded-lg p-4 hover:shadow-md transition-all duration-200 cursor-pointer';
+                resultElement.onclick = () => showSingleRequestDetails(request);
+                
+                resultElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h5 class="font-semibold text-gray-800 text-lg">${request.id}</h5>
+                            <p class="text-sm text-gray-600">👤 ${request.fullName} (${request.studentId})</p>
+                            <p class="text-sm text-gray-600">📅 ยื่นเมื่อ: ${request.submitDate}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                                ขั้นตอนที่ ${currentStepIndex + 1}: ${currentStep}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <p class="text-sm text-gray-700"><strong>📄 เอกสาร:</strong></p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 ml-2">
+                            ${request.documents.map(doc => `<li>${doc} (${request.quantity} ฉบับ)</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="text-center">
+                        <button class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            👁️ คลิกเพื่อดูรายละเอียดเต็ม
+                        </button>
+                    </div>
+                `;
+                
+                resultsList.appendChild(resultElement);
+            });
+        }
+
+        // Keep the old function for backward compatibility
+        function trackRequest() {
+            searchRequests();
+        }
+
+        // Google Sheets Setup Functions
+        function showGoogleSheetsSetup() {
+            document.getElementById('googleSheetsModal').classList.remove('hidden');
+            updateConnectionStatus();
+        }
+
+        function hideGoogleSheetsSetup() {
+            document.getElementById('googleSheetsModal').classList.add('hidden');
+        }
+
+        function updateConnectionStatus() {
+            const statusDiv = document.getElementById('connectionStatus');
+            const isConfigured = GOOGLE_SHEETS_CONFIG.webAppUrl !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+            
+            if (isConfigured) {
+                statusDiv.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                        <span class="text-green-700">เชื่อมต่อแล้ว - พร้อมบันทึกข้อมูลไป Google Sheets</span>
+                    </div>
+                `;
+            } else {
+                statusDiv.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                        <span class="text-yellow-700">Demo Mode - ข้อมูลจะแสดงใน Console เท่านั้น</span>
+                    </div>
+                `;
+            }
+        }
+
+        function copyGoogleAppsScriptCode() {
+            const code = `function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    const action = data.action;
+    
+    // เปลี่ยน SPREADSHEET_ID เป็น ID ของ Google Sheets ของคุณ
+    const SPREADSHEET_ID = 'YOUR_SPREADSHEET_ID_HERE';
+    const sheet = SpreadsheetApp.openById(SPREADSHEET_ID).getActiveSheet();
+    
+    if (action === 'addRow') {
+      const rowData = data.data;
+      
+      // เพิ่มหัวข้อถ้ายังไม่มี
+      if (sheet.getLastRow() === 0) {
+        sheet.appendRow([
+          'หมายเลขคำขอ', 'คำนำหน้าชื่อ', 'ชื่อ-นามสกุล', 'คำนำหน้าชื่อเก่า', 'ชื่อ-นามสกุลเก่า', 'เคยเปลี่ยนชื่อ', 'รหัสนักเรียน', 'สถานภาพ', 'ระดับชั้น', 'ห้อง', 'ปีที่จบ',
+          'เอกสารที่ขอ', 'จำนวน', 'วัตถุประสงค์', 'เบอร์โทร', 
+          'วันที่ยื่น', 'เวลาที่ยื่น', 'สถานะ', 'อัพเดทล่าสุด'
+        ]);
+      }
+      
+      // เพิ่มข้อมูล
+      sheet.appendRow([
+        rowData.requestId,
+        rowData.titlePrefix,
+        rowData.fullName,
+        rowData.oldTitlePrefix,
+        rowData.oldName,
+        rowData.hasNameChange,
+        rowData.studentId,
+        rowData.studentStatus,
+        rowData.faculty,
+        rowData.room,
+        rowData.graduationYear,
+        rowData.documents,
+        rowData.quantity,
+        rowData.purpose,
+        rowData.phone,
+        rowData.submitDate,
+        rowData.submitTime,
+        rowData.status,
+        new Date().toLocaleString('th-TH')
+      ]);
+      
+      return ContentService
+        .createTextOutput(JSON.stringify({success: true, message: 'บันทึกข้อมูลสำเร็จ'}))
+        .setMimeType(ContentService.MimeType.JSON);
+        
+    } else if (action === 'updateStatus') {
+      // อัพเดทสถานะ
+      const requestId = data.requestId;
+      const newStatus = data.status;
+      const stepCompleted = data.stepCompleted;
+      const updateTime = data.updateTime;
+      
+      const dataRange = sheet.getDataRange();
+      const values = dataRange.getValues();
+      
+      for (let i = 1; i < values.length; i++) {
+        if (values[i][0] === requestId) {
+          sheet.getRange(i + 1, 18).setValue(newStatus); // สถานะ
+          sheet.getRange(i + 1, 19).setValue(updateTime); // อัพเดทล่าสุด
+          break;
+        }
+      }
+      
+      return ContentService
+        .createTextOutput(JSON.stringify({success: true, message: 'อัพเดทสถานะสำเร็จ'}))
+        .setMimeType(ContentService.MimeType.JSON);
+    }
+    
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({success: false, error: error.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}`;
+
+            navigator.clipboard.writeText(code).then(() => {
+                alert('📋 คัดลอก Google Apps Script Code แล้ว!\n\nนำไปวางใน Code.gs ใน Google Apps Script');
+            }).catch(() => {
+                // Fallback for older browsers
+                const textArea = document.createElement('textarea');
+                textArea.value = code;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                alert('📋 คัดลอก Google Apps Script Code แล้ว!');
+            });
+        }
+
+        function testConnection() {
+            const webAppUrl = document.getElementById('webAppUrlInput').value.trim();
+            
+            if (!webAppUrl) {
+                alert('⚠️ กรุณากรอก Web App URL ก่อนทดสอบ');
+                return;
+            }
+
+            // Test connection with sample data
+            const testData = {
+                action: 'addRow',
+                data: {
+                    requestId: 'TEST001',
+                    fullName: 'ทดสอบระบบ',
+                    studentId: '00000',
+                    faculty: 'ทดสอบ',
+                    documents: 'ทดสอบการเชื่อมต่อ',
+                    quantity: '1',
+                    purpose: 'ทดสอบ',
+                    phone: '000-000-0000',
+                    submitDate: new Date().toLocaleDateString('th-TH'),
+                    submitTime: new Date().toLocaleTimeString('th-TH'),
+                    status: 'test'
+                }
+            };
+
+            fetch(webAppUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(testData)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('✅ ทดสอบการเชื่อมต่อสำเร็จ!\nข้อมูลทดสอบได้ถูกบันทึกไป Google Sheets แล้ว');
+                } else {
+                    alert('❌ การทดสอบล้มเหลว: ' + (result.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                alert('❌ เกิดข้อผิดพลาดในการทดสอบ: ' + error.message);
+            });
+        }
+
+        function saveGoogleSheetsConfig() {
+            const webAppUrl = document.getElementById('webAppUrlInput').value.trim();
+            const spreadsheetId = document.getElementById('spreadsheetIdInput').value.trim();
+
+            if (!webAppUrl && !spreadsheetId) {
+                alert('⚠️ กรุณากรอกข้อมูลการตั้งค่าอย่างน้อย 1 รายการ');
+                return;
+            }
+
+            // Update configuration
+            if (webAppUrl) {
+                GOOGLE_SHEETS_CONFIG.webAppUrl = webAppUrl;
+            }
+            if (spreadsheetId) {
+                GOOGLE_SHEETS_CONFIG.spreadsheetId = spreadsheetId;
+            }
+
+            // Save to localStorage for persistence
+            localStorage.setItem('googleSheetsConfig', JSON.stringify(GOOGLE_SHEETS_CONFIG));
+
+            updateConnectionStatus();
+            alert('💾 บันทึกการตั้งค่าสำเร็จ!\nระบบพร้อมบันทึกข้อมูลไป Google Sheets แล้ว');
+        }
+
+        // Load saved configuration on page load
+        function loadSavedConfig() {
+            const saved = localStorage.getItem('googleSheetsConfig');
+            if (saved) {
+                const config = JSON.parse(saved);
+                Object.assign(GOOGLE_SHEETS_CONFIG, config);
+                
+                // Update input fields
+                if (config.webAppUrl) {
+                    document.getElementById('webAppUrlInput').value = config.webAppUrl;
+                }
+                if (config.spreadsheetId) {
+                    document.getElementById('spreadsheetIdInput').value = config.spreadsheetId;
+                }
+            }
+        }
+
+        // Load configuration when page loads
+        window.addEventListener('load', loadSavedConfig);
+
+        // Admin Google Sheets Functions
+        function loadAdminGoogleSheetsConfig() {
+            updateAdminConnectionStatus();
+            
+            // Load saved configuration into admin inputs
+            if (GOOGLE_SHEETS_CONFIG.webAppUrl && GOOGLE_SHEETS_CONFIG.webAppUrl !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE') {
+                document.getElementById('adminWebAppUrlInput').value = GOOGLE_SHEETS_CONFIG.webAppUrl;
+            }
+            if (GOOGLE_SHEETS_CONFIG.spreadsheetId && GOOGLE_SHEETS_CONFIG.spreadsheetId !== 'YOUR_SPREADSHEET_ID_HERE') {
+                document.getElementById('adminSpreadsheetIdInput').value = GOOGLE_SHEETS_CONFIG.spreadsheetId;
+            }
+        }
+
+        function updateAdminConnectionStatus() {
+            const statusDiv = document.getElementById('adminConnectionStatus');
+            const isConfigured = GOOGLE_SHEETS_CONFIG.webAppUrl !== 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE';
+            
+            if (isConfigured) {
+                statusDiv.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-green-500 rounded-full"></span>
+                        <span class="text-green-700">เชื่อมต่อแล้ว - พร้อมบันทึกข้อมูลไป Google Sheets</span>
+                    </div>
+                `;
+            } else {
+                statusDiv.innerHTML = `
+                    <div class="flex items-center space-x-2">
+                        <span class="w-3 h-3 bg-yellow-500 rounded-full"></span>
+                        <span class="text-yellow-700">Demo Mode - ข้อมูลจะแสดงใน Console เท่านั้น</span>
+                    </div>
+                `;
+            }
+        }
+
+        function adminTestConnection() {
+            const webAppUrl = document.getElementById('adminWebAppUrlInput').value.trim();
+            
+            if (!webAppUrl) {
+                alert('⚠️ กรุณากรอก Web App URL ก่อนทดสอบ');
+                return;
+            }
+
+            // Test connection with sample data
+            const testData = {
+                action: 'addRow',
+                data: {
+                    requestId: 'TEST001',
+                    fullName: 'ทดสอบระบบ',
+                    studentId: '00000',
+                    faculty: 'ทดสอบ',
+                    documents: 'ทดสอบการเชื่อมต่อ',
+                    quantity: '1',
+                    purpose: 'ทดสอบ',
+                    phone: '000-000-0000',
+                    submitDate: new Date().toLocaleDateString('th-TH'),
+                    submitTime: new Date().toLocaleTimeString('th-TH'),
+                    status: 'test'
+                }
+            };
+
+            fetch(webAppUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(testData)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('✅ ทดสอบการเชื่อมต่อสำเร็จ!\nข้อมูลทดสอบได้ถูกบันทึกไป Google Sheets แล้ว');
+                } else {
+                    alert('❌ การทดสอบล้มเหลว: ' + (result.error || 'Unknown error'));
+                }
+            })
+            .catch(error => {
+                alert('❌ เกิดข้อผิดพลาดในการทดสอบ: ' + error.message);
+            });
+        }
+
+        function adminSaveGoogleSheetsConfig() {
+            const webAppUrl = document.getElementById('adminWebAppUrlInput').value.trim();
+            const spreadsheetId = document.getElementById('adminSpreadsheetIdInput').value.trim();
+
+            if (!webAppUrl && !spreadsheetId) {
+                alert('⚠️ กรุณากรอกข้อมูลการตั้งค่าอย่างน้อย 1 รายการ');
+                return;
+            }
+
+            // Update configuration
+            if (webAppUrl) {
+                GOOGLE_SHEETS_CONFIG.webAppUrl = webAppUrl;
+            }
+            if (spreadsheetId) {
+                GOOGLE_SHEETS_CONFIG.spreadsheetId = spreadsheetId;
+            }
+
+            // Save to localStorage for persistence
+            localStorage.setItem('googleSheetsConfig', JSON.stringify(GOOGLE_SHEETS_CONFIG));
+
+            updateAdminConnectionStatus();
+            alert('💾 บันทึกการตั้งค่าสำเร็จ!\nระบบพร้อมบันทึกข้อมูลไป Google Sheets แล้ว');
+        }
+
+        // Toggle grade level field based on student status
+        function toggleGradeLevel() {
+            const currentStudent = document.getElementById('currentStudent').checked;
+            const alumniStudent = document.getElementById('alumniStudent').checked;
+            const gradeLevelField = document.getElementById('gradeLevelField');
+            const graduationYearField = document.getElementById('graduationYearField');
+            const facultySelect = document.getElementById('faculty');
+            const roomSelect = document.getElementById('room');
+            const roomField = document.getElementById('roomField');
+            const graduationYearInput = document.getElementById('graduationYear');
+            
+            if (currentStudent) {
+                // Show grade level field for current students
+                gradeLevelField.classList.remove('hidden');
+                graduationYearField.classList.add('hidden');
+                facultySelect.required = true;
+                graduationYearInput.required = false;
+                graduationYearInput.value = '';
+                // Reset room selection
+                roomField.classList.add('hidden');
+                roomSelect.required = false;
+                roomSelect.value = '';
+            } else if (alumniStudent) {
+                // Show graduation year field for alumni
+                gradeLevelField.classList.add('hidden');
+                graduationYearField.classList.remove('hidden');
+                facultySelect.required = false;
+                facultySelect.value = '';
+                graduationYearInput.required = true;
+                // Hide room field
+                roomField.classList.add('hidden');
+                roomSelect.required = false;
+                roomSelect.value = '';
+            } else {
+                // Hide both fields if nothing is selected
+                gradeLevelField.classList.add('hidden');
+                graduationYearField.classList.add('hidden');
+                facultySelect.required = false;
+                graduationYearInput.required = false;
+                facultySelect.value = '';
+                graduationYearInput.value = '';
+                // Hide room field
+                roomField.classList.add('hidden');
+                roomSelect.required = false;
+                roomSelect.value = '';
+            }
+        }
+
+        // Toggle room selection based on grade level
+        function toggleRoomSelection() {
+            const facultySelect = document.getElementById('faculty');
+            const roomField = document.getElementById('roomField');
+            const roomSelect = document.getElementById('room');
+            
+            if (facultySelect.value) {
+                // Show room field when grade level is selected
+                roomField.classList.remove('hidden');
+                roomSelect.required = true;
+            } else {
+                // Hide room field when no grade level is selected
+                roomField.classList.add('hidden');
+                roomSelect.required = false;
+                roomSelect.value = '';
+            }
+        }
+
+        // Toggle old name field
+        function toggleOldNameField() {
+            const hasNameChange = document.getElementById('hasNameChange').checked;
+            const oldNameField = document.getElementById('oldNameField');
+            const oldNameInput = document.getElementById('oldName');
+            const oldTitlePrefixInput = document.getElementById('oldTitlePrefix');
+            
+            if (hasNameChange) {
+                oldNameField.classList.remove('hidden');
+                oldNameInput.required = true;
+                oldTitlePrefixInput.required = true;
+            } else {
+                oldNameField.classList.add('hidden');
+                oldNameInput.required = false;
+                oldTitlePrefixInput.required = false;
+                oldNameInput.value = '';
+                oldTitlePrefixInput.value = '';
+            }
+        }
+
+        // Toggle รบ.1 details field
+        function toggleRb1Details(checkbox) {
+            const parentLabel = checkbox.closest('label');
+            const rb1DetailsField = parentLabel.querySelector('.rb1-details-field');
+            const graduationYearInput = parentLabel.querySelector('.graduation-year-input');
+            const rb1LevelInputs = parentLabel.querySelectorAll('.rb1-level-input');
+            
+            if (checkbox.checked) {
+                rb1DetailsField.classList.remove('hidden');
+                graduationYearInput.required = true;
+                rb1LevelInputs.forEach(input => input.required = true);
+            } else {
+                rb1DetailsField.classList.add('hidden');
+                graduationYearInput.required = false;
+                graduationYearInput.value = '';
+                rb1LevelInputs.forEach(input => {
+                    input.required = false;
+                    input.checked = false;
+                });
+            }
+        }
+
+        // Toggle semester details field for ปพ.6
+        function toggleSemesterDetails(checkbox) {
+            const parentLabel = checkbox.closest('label');
+            const semesterDetailsField = parentLabel.querySelector('.semester-details-field');
+            const semesterInput = parentLabel.querySelector('.semester-input');
+            const academicYearInput = parentLabel.querySelector('.academic-year-input');
+            
+            if (checkbox.checked) {
+                semesterDetailsField.classList.remove('hidden');
+                semesterInput.required = true;
+                academicYearInput.required = true;
+            } else {
+                semesterDetailsField.classList.add('hidden');
+                semesterInput.required = false;
+                academicYearInput.required = false;
+                semesterInput.value = '';
+                academicYearInput.value = '';
+            }
+        }
+
+        // Toggle other document field
+        function toggleOtherDocument(checkbox) {
+            const parentLabel = checkbox.closest('label');
+            const otherDocumentField = parentLabel.querySelector('.other-document-field');
+            const otherDocumentInput = parentLabel.querySelector('.other-document-input');
+            
+            if (checkbox.checked) {
+                otherDocumentField.classList.remove('hidden');
+                otherDocumentInput.required = true;
+            } else {
+                otherDocumentField.classList.add('hidden');
+                otherDocumentInput.required = false;
+                otherDocumentInput.value = '';
+            }
+        }
+
+        // Toggle purpose details field
+        function togglePurposeDetails() {
+            const purposeSelect = document.getElementById('purpose');
+            const purposeDetailsField = document.getElementById('purposeDetailsField');
+            const purposeDetailsInput = document.getElementById('purposeDetails');
+            
+            if (purposeSelect.value === 'อื่นๆ') {
+                purposeDetailsField.classList.remove('hidden');
+                purposeDetailsInput.required = true;
+            } else {
+                purposeDetailsField.classList.add('hidden');
+                purposeDetailsInput.required = false;
+                purposeDetailsInput.value = '';
+            }
+        }
+
+        // Page Navigation Functions
+        function showSubmitPage() {
+            document.getElementById('mainPage').classList.add('hidden');
+            document.getElementById('submitPage').classList.remove('hidden');
+            document.getElementById('trackingPage').classList.add('hidden');
+            document.getElementById('adminPage').classList.add('hidden');
+        }
+
+        function showTrackingPage() {
+            document.getElementById('mainPage').classList.add('hidden');
+            document.getElementById('submitPage').classList.add('hidden');
+            document.getElementById('trackingPage').classList.remove('hidden');
+            document.getElementById('adminPage').classList.add('hidden');
+        }
+
+        function goBackToMenu() {
+            document.getElementById('mainPage').classList.remove('hidden');
+            document.getElementById('submitPage').classList.add('hidden');
+            document.getElementById('trackingPage').classList.add('hidden');
+            document.getElementById('adminPage').classList.add('hidden');
+        }
+
+        // Admin Functions
+        function showAdminLogin() {
+            document.getElementById('adminLoginModal').classList.remove('hidden');
+        }
+
+        function hideAdminLogin() {
+            document.getElementById('adminLoginModal').classList.add('hidden');
+        }
+
+        document.getElementById('adminLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            // Check against user database
+            const user = userDatabase[username];
+            if (user && user.password === password) {
+                isAdminLoggedIn = true;
+                hideAdminLogin();
+                showAdminPage();
+                loadAdminRequests();
+                loadUsersList();
+                alert(`✅ เข้าสู่ระบบสำเร็จ!\nยินดีต้อนรับ ${user.fullName}`);
+            } else {
+                alert('❌ Username หรือ Password ไม่ถูกต้อง');
+            }
+        });
+
+        function showAdminPage() {
+            document.getElementById('mainPage').classList.add('hidden');
+            document.getElementById('adminPage').classList.remove('hidden');
+            updateNotificationDisplay();
+        }
+
+        function hideAdminPage() {
+            document.getElementById('adminPage').classList.add('hidden');
+            document.getElementById('mainPage').classList.remove('hidden');
+            updateNotificationDisplay();
+        }
+
+        function goBackToMain() {
+            goBackToMenu();
+        }
+
+        function adminLogout() {
+            isAdminLoggedIn = false;
+            hideAdminPage();
+            updateNotificationDisplay();
+            alert('👋 ออกจากระบบ Admin แล้ว');
+        }
+
+        // Notification Functions
+        function addNotification(notification) {
+            notifications.unshift(notification); // Add to beginning of array
+            updateNotificationDisplay();
+        }
+
+        function updateNotificationDisplay() {
+            const adminNotificationBell = document.getElementById('adminNotificationBell');
+            const adminNotificationBadge = document.getElementById('adminNotificationBadge');
+            
+            if (isAdminLoggedIn) {
+                const unreadCount = notifications.filter(n => !n.isRead).length;
+                if (unreadCount > 0) {
+                    adminNotificationBadge.classList.remove('hidden');
+                    adminNotificationBadge.textContent = unreadCount > 99 ? '99+' : unreadCount;
+                    
+                    // Add pulsing animation for new notifications
+                    adminNotificationBell.classList.add('animate-pulse');
+                    setTimeout(() => {
+                        adminNotificationBell.classList.remove('animate-pulse');
+                    }, 3000);
+                } else {
+                    adminNotificationBadge.classList.add('hidden');
+                }
+            }
+        }
+
+        function showNotifications() {
+            document.getElementById('notificationModal').classList.remove('hidden');
+            loadNotifications();
+        }
+
+        function hideNotifications() {
+            document.getElementById('notificationModal').classList.add('hidden');
+        }
+
+        function loadNotifications() {
+            const notificationList = document.getElementById('notificationList');
+            
+            if (notifications.length === 0) {
+                notificationList.innerHTML = '<div class="text-gray-500 text-center py-4">ไม่มีการแจ้งเตือนใหม่</div>';
+                return;
+            }
+
+            notificationList.innerHTML = '';
+            
+            notifications.forEach(notification => {
+                const notificationElement = document.createElement('div');
+                notificationElement.className = `border rounded-lg p-3 cursor-pointer hover:bg-gray-50 ${
+                    notification.isRead ? 'bg-gray-50 border-gray-200' : 'bg-blue-50 border-blue-200'
+                }`;
+                
+                notificationElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-medium text-gray-800 text-sm">${notification.title}</h4>
+                        <div class="flex items-center space-x-2">
+                            ${!notification.isRead ? '<span class="w-2 h-2 bg-blue-500 rounded-full"></span>' : ''}
+                            <button onclick="deleteNotification('${notification.id}')" class="text-red-500 hover:text-red-700 text-xs">🗑️</button>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">${notification.message}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500">⏰ ${notification.timestamp}</span>
+                        ${notification.requestId ? `<button onclick="viewRequestFromNotification('${notification.requestId}')" class="text-blue-600 hover:text-blue-800 text-xs font-medium">👁️ ดูคำขอ</button>` : ''}
+                    </div>
+                `;
+                
+                // Mark as read when clicked
+                notificationElement.addEventListener('click', () => {
+                    if (!notification.isRead) {
+                        notification.isRead = true;
+                        updateNotificationDisplay();
+                        loadNotifications();
+                    }
+                });
+                
+                notificationList.appendChild(notificationElement);
+            });
+        }
+
+        function markAllAsRead() {
+            notifications.forEach(notification => {
+                notification.isRead = true;
+            });
+            updateNotificationDisplay();
+            loadNotifications();
+            alert('✅ อ่านการแจ้งเตือนทั้งหมดแล้ว');
+        }
+
+        function clearAllNotifications() {
+            if (confirm('คุณต้องการลบการแจ้งเตือนทั้งหมดใช่หรือไม่?')) {
+                notifications = [];
+                updateNotificationDisplay();
+                loadNotifications();
+                alert('🗑️ ลบการแจ้งเตือนทั้งหมดแล้ว');
+            }
+        }
+
+        function deleteNotification(notificationId) {
+            notifications = notifications.filter(n => n.id !== notificationId);
+            updateNotificationDisplay();
+            loadNotifications();
+        }
+
+        function viewRequestFromNotification(requestId) {
+            hideNotifications();
+            
+            // Make sure we're on admin page and requests tab
+            if (!document.getElementById('adminPage').classList.contains('hidden')) {
+                showAdminTab('requests');
+            } else {
+                // If not on admin page, go there first
+                showAdminPage();
+                showAdminTab('requests');
+            }
+            
+            // Highlight the specific request
+            setTimeout(() => {
+                const requestElements = document.querySelectorAll('#adminRequestList > div');
+                requestElements.forEach(element => {
+                    const titleElement = element.querySelector('h4');
+                    if (titleElement && titleElement.textContent === requestId) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        element.style.border = '2px solid #3B82F6';
+                        element.style.backgroundColor = '#EFF6FF';
+                        
+                        setTimeout(() => {
+                            element.style.border = '';
+                            element.style.backgroundColor = '';
+                        }, 3000);
+                    }
+                });
+            }, 100);
+        }
+
+        // Admin Tab Functions
+        function showAdminTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.admin-tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            
+            // Reset all tab buttons
+            document.getElementById('requestsTab').className = 'px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-400 transition-all duration-200';
+            document.getElementById('statisticsTab').className = 'px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-400 transition-all duration-200';
+            document.getElementById('usersTab').className = 'px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-400 transition-all duration-200';
+            document.getElementById('sheetsTab').className = 'px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-medium hover:bg-gray-400 transition-all duration-200';
+            
+            // Show selected tab content and highlight button
+            if (tabName === 'requests') {
+                document.getElementById('requestsTabContent').classList.remove('hidden');
+                document.getElementById('requestsTab').className = 'px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-all duration-200';
+                loadAdminRequests();
+            } else if (tabName === 'statistics') {
+                document.getElementById('statisticsTabContent').classList.remove('hidden');
+                document.getElementById('statisticsTab').className = 'px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-all duration-200';
+                loadStatistics();
+            } else if (tabName === 'users') {
+                document.getElementById('usersTabContent').classList.remove('hidden');
+                document.getElementById('usersTab').className = 'px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-all duration-200';
+                loadUsersList();
+            } else if (tabName === 'sheets') {
+                document.getElementById('sheetsTabContent').classList.remove('hidden');
+                document.getElementById('sheetsTab').className = 'px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-all duration-200';
+                loadAdminGoogleSheetsConfig();
+            }
+        }
+
+        // User Management Functions
+        function showAddUserForm() {
+            document.getElementById('addUserForm').classList.remove('hidden');
+        }
+
+        function hideAddUserForm() {
+            document.getElementById('addUserForm').classList.add('hidden');
+            document.getElementById('newUserForm').reset();
+        }
+
+        document.getElementById('newUserForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('newUsername').value;
+            const password = document.getElementById('newPassword').value;
+            const fullName = document.getElementById('newFullName').value;
+            const role = document.getElementById('newRole').value;
+            
+            // Check if username already exists
+            if (userDatabase[username]) {
+                alert('❌ ชื่อผู้ใช้นี้มีอยู่ในระบบแล้ว');
+                return;
+            }
+            
+            // Add new user
+            userDatabase[username] = {
+                username: username,
+                password: password,
+                fullName: fullName,
+                role: role,
+                createdDate: new Date().toLocaleDateString('th-TH')
+            };
+            
+            // Reset form and hide
+            hideAddUserForm();
+            
+            // Reload users list
+            loadUsersList();
+            
+            alert(`✅ เพิ่มผู้ใช้ "${fullName}" สำเร็จ!\nUsername: ${username}\nPassword: ${password}`);
+        });
+
+        function loadUsersList() {
+            const usersList = document.getElementById('usersList');
+            usersList.innerHTML = '';
+            
+            Object.values(userDatabase).forEach(user => {
+                const userElement = document.createElement('div');
+                userElement.className = 'bg-white border border-gray-200 rounded-lg p-4';
+                
+                const roleColor = user.role === 'admin' ? 'bg-red-100 text-red-700' : 'bg-blue-100 text-blue-700';
+                const roleIcon = user.role === 'admin' ? '👑' : '👤';
+                
+                userElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 flex items-center">
+                                ${roleIcon} ${user.fullName}
+                            </h4>
+                            <p class="text-sm text-gray-600">Username: ${user.username}</p>
+                            <p class="text-sm text-gray-600">สร้างเมื่อ: ${user.createdDate}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="px-2 py-1 ${roleColor} text-xs rounded-full font-medium">
+                                ${user.role.toUpperCase()}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex space-x-2">
+                        <button onclick="editUser('${user.username}')" class="px-3 py-1 bg-yellow-500 text-white text-xs rounded hover:bg-yellow-600">
+                            ✏️ แก้ไข
+                        </button>
+                        <button onclick="resetUserPassword('${user.username}')" class="px-3 py-1 bg-orange-500 text-white text-xs rounded hover:bg-orange-600">
+                            🔑 รีเซ็ตรหัสผ่าน
+                        </button>
+                        ${user.username !== 'admin' ? `<button onclick="deleteUser('${user.username}')" class="px-3 py-1 bg-red-500 text-white text-xs rounded hover:bg-red-600">
+                            🗑️ ลบ
+                        </button>` : ''}
+                    </div>
+                `;
+                
+                usersList.appendChild(userElement);
+            });
+        }
+
+        function editUser(username) {
+            const user = userDatabase[username];
+            if (!user) return;
+            
+            const newFullName = prompt('แก้ไขชื่อ-นามสกุล:', user.fullName);
+            if (newFullName && newFullName.trim() !== '') {
+                user.fullName = newFullName.trim();
+                loadUsersList();
+                alert('✅ แก้ไขข้อมูลผู้ใช้สำเร็จ');
+            }
+        }
+
+        function resetUserPassword(username) {
+            const user = userDatabase[username];
+            if (!user) return;
+            
+            const newPassword = prompt('กรอกรหัสผ่านใหม่:', '');
+            if (newPassword && newPassword.trim() !== '') {
+                user.password = newPassword.trim();
+                alert(`✅ รีเซ็ตรหัสผ่านสำเร็จ!\nUsername: ${username}\nรหัสผ่านใหม่: ${newPassword}`);
+            }
+        }
+
+        function deleteUser(username) {
+            const user = userDatabase[username];
+            if (!user) return;
+            
+            if (confirm(`คุณต้องการลบผู้ใช้ "${user.fullName}" ใช่หรือไม่?`)) {
+                delete userDatabase[username];
+                loadUsersList();
+                alert('✅ ลบผู้ใช้สำเร็จ');
+            }
+        }
+
+        function loadAdminRequests() {
+            const adminRequestList = document.getElementById('adminRequestList');
+            
+            if (Object.keys(requestDatabase).length === 0) {
+                adminRequestList.innerHTML = '<div class="text-gray-500 text-center py-8">ยังไม่มีคำขอเอกสารในระบบ</div>';
+                return;
+            }
+
+            adminRequestList.innerHTML = '';
+            
+            Object.values(requestDatabase).forEach(request => {
+                const requestElement = document.createElement('div');
+                requestElement.className = 'bg-white border border-gray-200 rounded-lg p-4';
+                
+                // Get current step
+                let currentStep = 'รับคำขอ';
+                let currentStepIndex = 0;
+                request.progress.forEach((step, index) => {
+                    if (step.status === 'completed' || step.status === 'in-progress') {
+                        currentStep = step.step;
+                        currentStepIndex = index;
+                    }
+                });
+
+                requestElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h4 class="font-semibold text-lg text-gray-800">${request.id}</h4>
+                            <p class="text-sm text-gray-600">ผู้ขอ: ${request.fullName} (${request.studentId})</p>
+                            <p class="text-sm text-gray-600">ยื่นเมื่อ: ${request.submitDate} ${request.submitTime}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="px-3 py-1 bg-blue-100 text-blue-700 text-sm rounded-full">
+                                ขั้นตอนที่ ${currentStepIndex + 1}: ${currentStep}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700 mb-2">เอกสารที่ขอ:</h5>
+                        <ul class="list-disc list-inside text-sm text-gray-600 ml-2">
+                            ${request.documents.map(doc => `<li>${doc} (${request.quantity} ฉบับ)</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="mb-4">
+                        <h5 class="font-medium text-gray-700 mb-2">ความคืบหน้า:</h5>
+                        <div class="grid grid-cols-5 gap-2">
+                            ${request.progress.map((step, index) => {
+                                let bgColor = 'bg-gray-100';
+                                let textColor = 'text-gray-500';
+                                let icon = '⏳';
+                                
+                                if (step.status === 'completed') {
+                                    bgColor = 'bg-green-100';
+                                    textColor = 'text-green-700';
+                                    icon = '✅';
+                                } else if (step.status === 'in-progress') {
+                                    bgColor = 'bg-blue-100';
+                                    textColor = 'text-blue-700';
+                                    icon = '🔄';
+                                }
+                                
+                                return `
+                                    <div class="text-center">
+                                        <div class="${bgColor} ${textColor} p-2 rounded-lg text-xs font-medium mb-1">
+                                            ${icon}<br>${step.step}
+                                        </div>
+                                    </div>
+                                `;
+                            }).join('')}
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-2">
+                        ${request.progress.map((step, index) => {
+                            // Show button for next pending step only
+                            if (step.status === 'pending') {
+                                // Check if previous step is completed (or it's the first step)
+                                if (index === 0 || request.progress[index - 1].status === 'completed') {
+                                    return `<button onclick="updateProgressStep('${request.id}', ${index})" class="px-3 py-1 bg-green-500 text-white text-xs rounded hover:bg-green-600">
+                                        ✅ ทำ${step.step}เสร็จ
+                                    </button>`;
+                                }
+                            }
+                            return '';
+                        }).join('')}
+                        
+                        <button onclick="viewRequestDetails('${request.id}')" class="px-3 py-1 bg-purple-500 text-white text-xs rounded hover:bg-purple-600">
+                            👁️ ดูรายละเอียด
+                        </button>
+                        
+                        <button onclick="resetProgress('${request.id}')" class="px-3 py-1 bg-orange-500 text-white text-xs rounded hover:bg-orange-600">
+                            🔄 รีเซ็ตสถานะ
+                        </button>
+                    </div>
+                `;
+                
+                adminRequestList.appendChild(requestElement);
+            });
+        }
+
+        function updateProgressStep(requestId, stepIndex) {
+            const request = requestDatabase[requestId];
+            if (!request) return;
+
+            // Update the step to completed
+            request.progress[stepIndex].status = 'completed';
+            request.progress[stepIndex].time = new Date().toLocaleString('th-TH');
+
+            // Set next step to pending (not in-progress, let admin control manually)
+            if (stepIndex + 1 < request.progress.length) {
+                request.progress[stepIndex + 1].status = 'pending';
+            }
+
+            // Update overall status
+            let newStatus = request.progress[stepIndex].step;
+            if (stepIndex === request.progress.length - 1) {
+                request.status = 'ready';
+                newStatus = 'พร้อมรับเอกสาร';
+            }
+
+            // Send status update to Google Sheets
+            const updateData = {
+                requestId: requestId,
+                status: newStatus,
+                stepCompleted: request.progress[stepIndex].step,
+                updateTime: new Date().toLocaleString('th-TH')
+            };
+
+            sendToGoogleSheets('updateStatus', updateData).then(result => {
+                if (result.success) {
+                    console.log('✅ อัพเดทสถานะใน Google Sheets สำเร็จ');
+                } else {
+                    console.error('❌ เกิดข้อผิดพลาดในการอัพเดท Google Sheets:', result.error);
+                }
+            });
+
+            // Reload admin panel
+            loadAdminRequests();
+            
+            alert(`✅ อัพเดทสถานะ "${request.progress[stepIndex].step}" สำเร็จ!`);
+        }
+
+        function resetProgress(requestId) {
+            const request = requestDatabase[requestId];
+            if (!request) return;
+
+            if (confirm('คุณต้องการรีเซ็ตสถานะการดำเนินการกลับไปเป็นขั้นตอนแรกใช่หรือไม่?')) {
+                // Reset all steps except the first one
+                request.progress.forEach((step, index) => {
+                    if (index === 0) {
+                        step.status = 'completed'; // Keep first step as completed
+                    } else {
+                        step.status = 'pending';
+                        step.time = '';
+                    }
+                });
+
+                request.status = 'submitted';
+
+                // Reload admin panel
+                loadAdminRequests();
+                
+                alert('🔄 รีเซ็ตสถานะเรียบร้อยแล้ว');
+            }
+        }
+
+        function viewRequestDetails(requestId) {
+            const request = requestDatabase[requestId];
+            if (!request) return;
+
+            let details = `📋 รายละเอียดคำขอ: ${requestId}\n\n`;
+            details += `👤 ผู้ขอ: ${request.fullName}\n`;
+            if (request.hasNameChange) {
+                details += `🔄 ชื่อ-นามสกุลเก่า: ${request.oldName}\n`;
+            }
+            details += `🆔 รหัสนักเรียน: ${request.studentId}\n`;
+            details += `📊 สถานภาพ: ${request.studentStatus === 'current' ? '🎓 นักเรียนปัจจุบัน' : '👨‍🎓 ศิษย์เก่า'}\n`;
+            if (request.studentStatus === 'current' && request.faculty) {
+                details += `🎓 ระดับชั้น: ${request.faculty}\n`;
+            }
+            if (request.studentStatus === 'alumni' && request.graduationYear) {
+                details += `📅 ปีที่จบ: ${request.graduationYear}\n`;
+            }
+            details += `📞 เบอร์โทร: ${request.phone}\n`;
+            details += `🎯 วัตถุประสงค์: ${request.purpose}\n`;
+            details += `📅 วันที่ยื่น: ${request.submitDate} ${request.submitTime}\n\n`;
+            details += `📄 เอกสารที่ขอ:\n`;
+            request.documents.forEach(doc => {
+                details += `• ${doc} (${request.quantity} ฉบับ)\n`;
+            });
+
+            alert(details);
+        }
+
+        // Statistics Functions
+        function loadStatistics() {
+            updateSummaryCards();
+            generateDocumentTypesChart();
+            generateMonthlyChart();
+            generateStatusChart();
+            loadRecentActivity();
+        }
+
+        function updateSummaryCards() {
+            const requests = Object.values(requestDatabase);
+            const today = new Date().toLocaleDateString('th-TH');
+            
+            // Total requests
+            document.getElementById('totalRequests').textContent = requests.length;
+            
+            // Completed requests (last step completed)
+            const completed = requests.filter(req => 
+                req.progress[req.progress.length - 1].status === 'completed'
+            ).length;
+            document.getElementById('completedRequests').textContent = completed;
+            
+            // Pending requests
+            const pending = requests.length - completed;
+            document.getElementById('pendingRequests').textContent = pending;
+            
+            // Today's requests
+            const todayRequests = requests.filter(req => req.submitDate === today).length;
+            document.getElementById('todayRequests').textContent = todayRequests;
+        }
+
+        function generateDocumentTypesChart() {
+            const documentTypes = {};
+            
+            Object.values(requestDatabase).forEach(request => {
+                request.documents.forEach(doc => {
+                    documentTypes[doc] = (documentTypes[doc] || 0) + parseInt(request.quantity);
+                });
+            });
+
+            const chartContainer = document.getElementById('documentTypesChart');
+            chartContainer.innerHTML = '';
+
+            if (Object.keys(documentTypes).length === 0) {
+                chartContainer.innerHTML = '<div class="text-gray-500 text-center py-4">ยังไม่มีข้อมูล</div>';
+                return;
+            }
+
+            const maxCount = Math.max(...Object.values(documentTypes));
+            const colors = ['bg-blue-500', 'bg-green-500', 'bg-yellow-500', 'bg-red-500', 'bg-purple-500'];
+
+            Object.entries(documentTypes)
+                .sort(([,a], [,b]) => b - a)
+                .forEach(([docType, count], index) => {
+                    const percentage = (count / maxCount) * 100;
+                    const color = colors[index % colors.length];
+                    
+                    const barElement = document.createElement('div');
+                    barElement.className = 'flex items-center space-x-3';
+                    barElement.innerHTML = `
+                        <div class="w-32 text-sm text-gray-700 truncate">${docType}</div>
+                        <div class="flex-1 bg-gray-200 rounded-full h-4 relative">
+                            <div class="${color} h-4 rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+                        </div>
+                        <div class="w-12 text-sm font-medium text-gray-700">${count}</div>
+                    `;
+                    chartContainer.appendChild(barElement);
+                });
+        }
+
+        function generateMonthlyChart() {
+            const monthlyData = {};
+            const months = ['ม.ค.', 'ก.พ.', 'มี.ค.', 'เม.ย.', 'พ.ค.', 'มิ.ย.', 'ก.ค.', 'ส.ค.', 'ก.ย.', 'ต.ค.', 'พ.ย.', 'ธ.ค.'];
+            
+            // Initialize current year months
+            const currentYear = new Date().getFullYear();
+            months.forEach((month, index) => {
+                monthlyData[`${index + 1}/${currentYear}`] = 0;
+            });
+
+            Object.values(requestDatabase).forEach(request => {
+                const dateParts = request.submitDate.split('/');
+                if (dateParts.length === 3) {
+                    const monthYear = `${dateParts[1]}/${dateParts[2]}`;
+                    monthlyData[monthYear] = (monthlyData[monthYear] || 0) + 1;
+                }
+            });
+
+            const chartContainer = document.getElementById('monthlyChart');
+            chartContainer.innerHTML = '';
+
+            const maxCount = Math.max(...Object.values(monthlyData), 1);
+            
+            Object.entries(monthlyData).forEach(([monthYear, count]) => {
+                const [month, year] = monthYear.split('/');
+                const monthName = months[parseInt(month) - 1];
+                const percentage = (count / maxCount) * 100;
+                
+                const barElement = document.createElement('div');
+                barElement.className = 'flex items-center space-x-3';
+                barElement.innerHTML = `
+                    <div class="w-16 text-sm text-gray-700">${monthName}</div>
+                    <div class="flex-1 bg-gray-200 rounded-full h-4 relative">
+                        <div class="bg-indigo-500 h-4 rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+                    </div>
+                    <div class="w-8 text-sm font-medium text-gray-700">${count}</div>
+                `;
+                chartContainer.appendChild(barElement);
+            });
+        }
+
+        function generateStatusChart() {
+            const statusData = {
+                'รับคำขอ': 0,
+                'ตรวจสอบข้อมูล': 0,
+                'จัดทำเอกสาร': 0,
+                'ตรวจสอบเอกสาร': 0,
+                'พร้อมรับเอกสาร': 0
+            };
+
+            Object.values(requestDatabase).forEach(request => {
+                // Find current step
+                let currentStep = 'รับคำขอ';
+                request.progress.forEach(step => {
+                    if (step.status === 'completed' || step.status === 'in-progress') {
+                        currentStep = step.step;
+                    }
+                });
+                statusData[currentStep]++;
+            });
+
+            const chartContainer = document.getElementById('statusChart');
+            chartContainer.innerHTML = '';
+
+            const colors = ['bg-blue-500', 'bg-yellow-500', 'bg-orange-500', 'bg-purple-500', 'bg-green-500'];
+            const icons = ['📋', '🔍', '📝', '✅', '🎉'];
+
+            Object.entries(statusData).forEach(([status, count], index) => {
+                const statusElement = document.createElement('div');
+                statusElement.className = `${colors[index]} text-white rounded-lg p-4 text-center`;
+                statusElement.innerHTML = `
+                    <div class="text-2xl mb-2">${icons[index]}</div>
+                    <div class="text-2xl font-bold mb-1">${count}</div>
+                    <div class="text-xs opacity-90">${status}</div>
+                `;
+                chartContainer.appendChild(statusElement);
+            });
+        }
+
+        function loadRecentActivity() {
+            const activityContainer = document.getElementById('recentActivity');
+            const activities = [];
+
+            // Collect all activities from requests
+            Object.values(requestDatabase).forEach(request => {
+                request.progress.forEach(step => {
+                    if (step.status === 'completed' && step.time) {
+                        activities.push({
+                            type: 'progress',
+                            message: `${request.fullName} - ${step.step} (${request.id})`,
+                            time: step.time,
+                            timestamp: new Date(step.time).getTime()
+                        });
+                    }
+                });
+
+                // Add submission activity
+                activities.push({
+                    type: 'submit',
+                    message: `${request.fullName} ยื่นคำขอเอกสาร (${request.id})`,
+                    time: `${request.submitDate} ${request.submitTime}`,
+                    timestamp: new Date(`${request.submitDate} ${request.submitTime}`).getTime()
+                });
+            });
+
+            // Sort by timestamp (newest first)
+            activities.sort((a, b) => b.timestamp - a.timestamp);
+
+            activityContainer.innerHTML = '';
+
+            if (activities.length === 0) {
+                activityContainer.innerHTML = '<div class="text-gray-500 text-center py-4">ยังไม่มีกิจกรรม</div>';
+                return;
+            }
+
+            // Show latest 10 activities
+            activities.slice(0, 10).forEach(activity => {
+                const activityElement = document.createElement('div');
+                activityElement.className = 'flex items-center space-x-3 p-3 bg-gray-50 rounded-lg';
+                
+                const icon = activity.type === 'submit' ? '📤' : '✅';
+                const color = activity.type === 'submit' ? 'text-blue-600' : 'text-green-600';
+                
+                activityElement.innerHTML = `
+                    <div class="text-lg">${icon}</div>
+                    <div class="flex-1">
+                        <div class="text-sm ${color} font-medium">${activity.message}</div>
+                        <div class="text-xs text-gray-500">⏰ ${activity.time}</div>
+                    </div>
+                `;
+                activityContainer.appendChild(activityElement);
+            });
+        }
+
+        // Management Functions
+        function showManagementLogin() {
+            document.getElementById('managementLoginModal').classList.remove('hidden');
+        }
+
+        function hideManagementLogin() {
+            document.getElementById('managementLoginModal').classList.add('hidden');
+        }
+
+        document.getElementById('managementLoginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const username = document.getElementById('managementUsername').value;
+            const password = document.getElementById('managementPassword').value;
+            
+            // Check against user database
+            const user = userDatabase[username];
+            if (user && user.password === password && user.role === 'management') {
+                isManagementLoggedIn = true;
+                hideManagementLogin();
+                showManagementPage();
+                loadManagementDashboard();
+                alert(`✅ เข้าสู่ระบบสำเร็จ!\nยินดีต้อนรับ ${user.fullName}`);
+            } else {
+                alert('❌ Username หรือ Password ไม่ถูกต้อง หรือไม่มีสิทธิ์เข้าถึงระบบผู้บริหาร');
+            }
+        });
+
+        function showManagementPage() {
+            document.getElementById('mainPage').classList.add('hidden');
+            document.getElementById('managementPage').classList.remove('hidden');
+            updateManagementNotificationDisplay();
+        }
+
+        function hideManagementPage() {
+            document.getElementById('managementPage').classList.add('hidden');
+            document.getElementById('mainPage').classList.remove('hidden');
+            updateManagementNotificationDisplay();
+        }
+
+        function managementLogout() {
+            isManagementLoggedIn = false;
+            hideManagementPage();
+            updateManagementNotificationDisplay();
+            alert('👋 ออกจากระบบผู้บริหารแล้ว');
+        }
+
+        // Management Notification Functions
+        function addManagementNotification(notification) {
+            managementNotifications.unshift(notification); // Add to beginning of array
+            updateManagementNotificationDisplay();
+            loadManagementNotificationsList();
+        }
+
+        function updateManagementNotificationDisplay() {
+            const managementNotificationBell = document.getElementById('managementNotificationBell');
+            const managementNotificationBadge = document.getElementById('managementNotificationBadge');
+            
+            if (isManagementLoggedIn) {
+                const unreadCount = managementNotifications.filter(n => !n.isRead).length;
+                if (unreadCount > 0) {
+                    managementNotificationBadge.classList.remove('hidden');
+                    managementNotificationBadge.textContent = unreadCount > 99 ? '99+' : unreadCount;
+                    
+                    // Add pulsing animation for new notifications
+                    managementNotificationBell.classList.add('animate-pulse');
+                    setTimeout(() => {
+                        managementNotificationBell.classList.remove('animate-pulse');
+                    }, 3000);
+                } else {
+                    managementNotificationBadge.classList.add('hidden');
+                }
+            }
+        }
+
+        function showManagementNotifications() {
+            document.getElementById('managementNotificationModal').classList.remove('hidden');
+            loadManagementNotificationsModal();
+        }
+
+        function hideManagementNotifications() {
+            document.getElementById('managementNotificationModal').classList.add('hidden');
+        }
+
+        function loadManagementNotificationsModal() {
+            const notificationList = document.getElementById('managementNotificationModalList');
+            
+            if (managementNotifications.length === 0) {
+                notificationList.innerHTML = '<div class="text-gray-500 text-center py-4">ไม่มีการแจ้งเตือนใหม่</div>';
+                return;
+            }
+
+            notificationList.innerHTML = '';
+            
+            managementNotifications.forEach(notification => {
+                const notificationElement = document.createElement('div');
+                notificationElement.className = `border rounded-lg p-3 cursor-pointer hover:bg-gray-50 ${
+                    notification.isRead ? 'bg-gray-50 border-gray-200' : 'bg-blue-50 border-blue-200'
+                }`;
+                
+                notificationElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-medium text-gray-800 text-sm">${notification.title}</h4>
+                        <div class="flex items-center space-x-2">
+                            ${!notification.isRead ? '<span class="w-2 h-2 bg-blue-500 rounded-full"></span>' : ''}
+                            <button onclick="deleteManagementNotification('${notification.id}')" class="text-red-500 hover:text-red-700 text-xs">🗑️</button>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">${notification.message}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500">⏰ ${notification.timestamp}</span>
+                        ${notification.requestId ? `<button onclick="viewRequestFromManagementNotification('${notification.requestId}')" class="text-blue-600 hover:text-blue-800 text-xs font-medium">👁️ ดูคำขอ</button>` : ''}
+                    </div>
+                `;
+                
+                // Mark as read when clicked
+                notificationElement.addEventListener('click', () => {
+                    if (!notification.isRead) {
+                        notification.isRead = true;
+                        updateManagementNotificationDisplay();
+                        loadManagementNotificationsModal();
+                        loadManagementNotificationsList();
+                    }
+                });
+                
+                notificationList.appendChild(notificationElement);
+            });
+        }
+
+        function loadManagementNotificationsList() {
+            const notificationsList = document.getElementById('managementNotificationsList');
+            
+            if (managementNotifications.length === 0) {
+                notificationsList.innerHTML = '<div class="text-gray-500 text-center py-8">ไม่มีการแจ้งเตือนใหม่</div>';
+                return;
+            }
+
+            notificationsList.innerHTML = '';
+            
+            // Show latest 5 notifications
+            managementNotifications.slice(0, 5).forEach(notification => {
+                const notificationElement = document.createElement('div');
+                notificationElement.className = `border rounded-lg p-3 cursor-pointer hover:bg-gray-50 ${
+                    notification.isRead ? 'bg-gray-50 border-gray-200' : 'bg-blue-50 border-blue-200'
+                }`;
+                
+                notificationElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-2">
+                        <h4 class="font-medium text-gray-800 text-sm">${notification.title}</h4>
+                        ${!notification.isRead ? '<span class="w-2 h-2 bg-blue-500 rounded-full"></span>' : ''}
+                    </div>
+                    <p class="text-gray-600 text-sm mb-2">${notification.message}</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-xs text-gray-500">⏰ ${notification.timestamp}</span>
+                        ${notification.requestId ? `<button onclick="viewRequestFromManagementNotification('${notification.requestId}')" class="text-blue-600 hover:text-blue-800 text-xs font-medium">👁️ ดูคำขอ</button>` : ''}
+                    </div>
+                `;
+                
+                // Mark as read when clicked
+                notificationElement.addEventListener('click', () => {
+                    if (!notification.isRead) {
+                        notification.isRead = true;
+                        updateManagementNotificationDisplay();
+                        loadManagementNotificationsList();
+                    }
+                });
+                
+                notificationsList.appendChild(notificationElement);
+            });
+        }
+
+        function markAllManagementAsRead() {
+            managementNotifications.forEach(notification => {
+                notification.isRead = true;
+            });
+            updateManagementNotificationDisplay();
+            loadManagementNotificationsModal();
+            loadManagementNotificationsList();
+            alert('✅ อ่านการแจ้งเตือนทั้งหมดแล้ว');
+        }
+
+        function clearAllManagementNotifications() {
+            if (confirm('คุณต้องการลบการแจ้งเตือนทั้งหมดใช่หรือไม่?')) {
+                managementNotifications = [];
+                updateManagementNotificationDisplay();
+                loadManagementNotificationsModal();
+                loadManagementNotificationsList();
+                alert('🗑️ ลบการแจ้งเตือนทั้งหมดแล้ว');
+            }
+        }
+
+        function deleteManagementNotification(notificationId) {
+            managementNotifications = managementNotifications.filter(n => n.id !== notificationId);
+            updateManagementNotificationDisplay();
+            loadManagementNotificationsModal();
+            loadManagementNotificationsList();
+        }
+
+        function viewRequestFromManagementNotification(requestId) {
+            hideManagementNotifications();
+            
+            // Show request details in alert for now
+            const request = requestDatabase[requestId];
+            if (request) {
+                let details = `📋 รายละเอียดคำขอ: ${requestId}\n\n`;
+                details += `👤 ผู้ขอ: ${request.fullName}\n`;
+                details += `🆔 รหัสนักเรียน: ${request.studentId}\n`;
+                details += `🎓 ระดับชั้น: ${request.faculty}\n`;
+                details += `📅 วันที่ยื่น: ${request.submitDate} ${request.submitTime}\n\n`;
+                details += `📄 เอกสารที่ขอ:\n`;
+                request.documents.forEach(doc => {
+                    details += `• ${doc} (${request.quantity} ฉบับ)\n`;
+                });
+                
+                // Get current step
+                let currentStep = 'รับคำขอ';
+                request.progress.forEach(step => {
+                    if (step.status === 'completed' || step.status === 'in-progress') {
+                        currentStep = step.step;
+                    }
+                });
+                details += `\n🔄 สถานะปัจจุบัน: ${currentStep}`;
+                
+                alert(details);
+            }
+        }
+
+        // Management Dashboard Functions
+        function loadManagementDashboard() {
+            updateManagementSummaryCards();
+            loadManagementNotificationsList();
+            loadManagementRequestsList();
+            generatePerformanceChart();
+        }
+
+        function updateManagementSummaryCards() {
+            const requests = Object.values(requestDatabase);
+            const today = new Date().toLocaleDateString('th-TH');
+            
+            // Total requests
+            document.getElementById('mgmtTotalRequests').textContent = requests.length;
+            
+            // Pending requests (not completed)
+            const pending = requests.filter(req => 
+                req.progress[req.progress.length - 1].status !== 'completed'
+            ).length;
+            document.getElementById('mgmtPendingRequests').textContent = pending;
+            
+            // Completed today
+            const completedToday = requests.filter(req => {
+                const lastStep = req.progress[req.progress.length - 1];
+                return lastStep.status === 'completed' && lastStep.time && lastStep.time.includes(today);
+            }).length;
+            document.getElementById('mgmtCompletedToday').textContent = completedToday;
+            
+            // Overdue requests (submitted more than 3 days ago and not completed)
+            const threeDaysAgo = new Date();
+            threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+            const overdue = requests.filter(req => {
+                const submitDate = new Date(req.submitDate);
+                const isOverdue = submitDate < threeDaysAgo;
+                const isNotCompleted = req.progress[req.progress.length - 1].status !== 'completed';
+                return isOverdue && isNotCompleted;
+            }).length;
+            document.getElementById('mgmtOverdueRequests').textContent = overdue;
+        }
+
+        function loadManagementRequestsList() {
+            const requestsList = document.getElementById('managementRequestsList');
+            
+            if (Object.keys(requestDatabase).length === 0) {
+                requestsList.innerHTML = '<div class="text-gray-500 text-center py-8">ยังไม่มีคำขอในระบบ</div>';
+                return;
+            }
+
+            requestsList.innerHTML = '';
+            
+            // Show latest 10 requests
+            const recentRequests = Object.values(requestDatabase)
+                .sort((a, b) => new Date(`${b.submitDate} ${b.submitTime}`) - new Date(`${a.submitDate} ${a.submitTime}`))
+                .slice(0, 10);
+            
+            recentRequests.forEach(request => {
+                // Get current step
+                let currentStep = 'รับคำขอ';
+                let currentStepIndex = 0;
+                request.progress.forEach((step, index) => {
+                    if (step.status === 'completed' || step.status === 'in-progress') {
+                        currentStep = step.step;
+                        currentStepIndex = index;
+                    }
+                });
+
+                const requestElement = document.createElement('div');
+                requestElement.className = 'bg-gray-50 border border-gray-200 rounded-lg p-4';
+                
+                requestElement.innerHTML = `
+                    <div class="flex justify-between items-start mb-3">
+                        <div>
+                            <h4 class="font-semibold text-gray-800">${request.id}</h4>
+                            <p class="text-sm text-gray-600">👤 ${request.fullName} (${request.studentId})</p>
+                            <p class="text-sm text-gray-600">📅 ยื่นเมื่อ: ${request.submitDate}</p>
+                        </div>
+                        <div class="text-right">
+                            <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full">
+                                ขั้นตอนที่ ${currentStepIndex + 1}: ${currentStep}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <p class="text-sm text-gray-700"><strong>📄 เอกสาร:</strong></p>
+                        <ul class="list-disc list-inside text-sm text-gray-600 ml-2">
+                            ${request.documents.map(doc => `<li>${doc} (${request.quantity} ฉบับ)</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="text-center">
+                        <button onclick="viewRequestFromManagementNotification('${request.id}')" class="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                            👁️ ดูรายละเอียดเต็ม
+                        </button>
+                    </div>
+                `;
+                
+                requestsList.appendChild(requestElement);
+            });
+        }
+
+        function generatePerformanceChart() {
+            const chartContainer = document.getElementById('performanceChart');
+            chartContainer.innerHTML = '';
+
+            // Generate data for last 7 days
+            const days = ['อา', 'จ', 'อ', 'พ', 'พฤ', 'ศ', 'ส'];
+            const today = new Date();
+            
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toLocaleDateString('th-TH');
+                const dayName = days[date.getDay()];
+                
+                // Count completed requests for this day
+                const completedCount = Object.values(requestDatabase).filter(req => {
+                    return req.progress.some(step => 
+                        step.status === 'completed' && step.time && step.time.includes(dateStr)
+                    );
+                }).length;
+                
+                const maxHeight = 100; // Max height in pixels
+                const height = Math.max(20, (completedCount / Math.max(1, 5)) * maxHeight); // Scale to max 5 requests
+                
+                const dayElement = document.createElement('div');
+                dayElement.className = 'text-center';
+                dayElement.innerHTML = `
+                    <div class="flex flex-col items-center justify-end h-32 mb-2">
+                        <div class="bg-indigo-500 rounded-t w-8 transition-all duration-500" style="height: ${height}px"></div>
+                        <div class="text-xs font-medium text-gray-700 mt-1">${completedCount}</div>
+                    </div>
+                    <div class="text-xs text-gray-600">${dayName}</div>
+                `;
+                chartContainer.appendChild(dayElement);
+            }
+        }
+
+        // Management Quick Actions
+        function viewAllPendingRequests() {
+            const pending = Object.values(requestDatabase).filter(req => 
+                req.progress[req.progress.length - 1].status !== 'completed'
+            );
+            
+            if (pending.length === 0) {
+                alert('✅ ไม่มีคำขอที่รอดำเนินการ');
+                return;
+            }
+            
+            let message = `📋 คำขอที่รอดำเนินการ (${pending.length} รายการ):\n\n`;
+            pending.forEach(req => {
+                let currentStep = 'รับคำขอ';
+                req.progress.forEach(step => {
+                    if (step.status === 'completed' || step.status === 'in-progress') {
+                        currentStep = step.step;
+                    }
+                });
+                message += `• ${req.id} - ${req.fullName} (${currentStep})\n`;
+            });
+            
+            alert(message);
+        }
+
+        function viewTodayActivity() {
+            const today = new Date().toLocaleDateString('th-TH');
+            const todayRequests = Object.values(requestDatabase).filter(req => 
+                req.submitDate === today
+            );
+            const todayCompleted = Object.values(requestDatabase).filter(req => {
+                const lastStep = req.progress[req.progress.length - 1];
+                return lastStep.status === 'completed' && lastStep.time && lastStep.time.includes(today);
+            });
+            
+            let message = `📅 กิจกรรมวันนี้ (${today}):\n\n`;
+            message += `📋 คำขอใหม่: ${todayRequests.length} รายการ\n`;
+            message += `✅ คำขอที่เสร็จสิ้น: ${todayCompleted.length} รายการ\n\n`;
+            
+            if (todayRequests.length > 0) {
+                message += `คำขอใหม่:\n`;
+                todayRequests.forEach(req => {
+                    message += `• ${req.id} - ${req.fullName}\n`;
+                });
+            }
+            
+            if (todayCompleted.length > 0) {
+                message += `\nคำขอที่เสร็จสิ้น:\n`;
+                todayCompleted.forEach(req => {
+                    message += `• ${req.id} - ${req.fullName}\n`;
+                });
+            }
+            
+            alert(message);
+        }
+
+        function generateReport() {
+            const requests = Object.values(requestDatabase);
+            const completed = requests.filter(req => 
+                req.progress[req.progress.length - 1].status === 'completed'
+            ).length;
+            const pending = requests.length - completed;
+            
+            let report = `📊 รายงานสรุประบบขอเอกสาร\n`;
+            report += `วันที่: ${new Date().toLocaleDateString('th-TH')}\n\n`;
+            report += `📋 คำขอทั้งหมด: ${requests.length} รายการ\n`;
+            report += `✅ เสร็จสิ้นแล้ว: ${completed} รายการ (${((completed/requests.length)*100).toFixed(1)}%)\n`;
+            report += `⏳ รอดำเนินการ: ${pending} รายการ (${((pending/requests.length)*100).toFixed(1)}%)\n\n`;
+            
+            // Document types summary
+            const documentTypes = {};
+            requests.forEach(req => {
+                req.documents.forEach(doc => {
+                    documentTypes[doc] = (documentTypes[doc] || 0) + parseInt(req.quantity);
+                });
+            });
+            
+            if (Object.keys(documentTypes).length > 0) {
+                report += `📄 เอกสารที่ขอมากที่สุด:\n`;
+                Object.entries(documentTypes)
+                    .sort(([,a], [,b]) => b - a)
+                    .slice(0, 5)
+                    .forEach(([doc, count]) => {
+                        report += `• ${doc}: ${count} ฉบับ\n`;
+                    });
+            }
+            
+            alert(report);
+        }
+
+        function viewOverdueRequests() {
+            const threeDaysAgo = new Date();
+            threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+            
+            const overdue = Object.values(requestDatabase).filter(req => {
+                const submitDate = new Date(req.submitDate);
+                const isOverdue = submitDate < threeDaysAgo;
+                const isNotCompleted = req.progress[req.progress.length - 1].status !== 'completed';
+                return isOverdue && isNotCompleted;
+            });
+            
+            if (overdue.length === 0) {
+                alert('✅ ไม่มีคำขอที่เกินกำหนด');
+                return;
+            }
+            
+            let message = `🚨 คำขอที่เกินกำหนด (${overdue.length} รายการ):\n\n`;
+            overdue.forEach(req => {
+                const daysPassed = Math.floor((new Date() - new Date(req.submitDate)) / (1000 * 60 * 60 * 24));
+                let currentStep = 'รับคำขอ';
+                req.progress.forEach(step => {
+                    if (step.status === 'completed' || step.status === 'in-progress') {
+                        currentStep = step.step;
+                    }
+                });
+                message += `• ${req.id} - ${req.fullName} (${daysPassed} วัน, ${currentStep})\n`;
+            });
+            
+            alert(message);
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97595092020c7993',t:'MTc1NjI3NDA3MS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
